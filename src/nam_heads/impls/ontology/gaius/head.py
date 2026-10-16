@@ -117,7 +117,7 @@ def check_available() -> Optional[str]:
     return None
 
 DEFAULT_CONFIG = {
-    "model_dir": None,            # None -> $NAM_GAIUS_MODEL_DIR, /app/colbert-zero-onnx, docker/assets
+    "model_dir": None,            # None -> $NAM_GAIUS_MODEL_DIR, then /app/colbert-zero-onnx
     "cache_dir": None,            # class-bank disk cache; None -> $NAM_GAIUS_CACHE_DIR or memory only
     "max_threads": None,          # ORT intra-op cap; None -> cpu_threads.threads()
     "max_sentences": 4,           # real sentences classified per record (lead included)
