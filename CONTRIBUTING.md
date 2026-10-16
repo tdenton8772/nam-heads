@@ -86,6 +86,23 @@ While your implementation is selected, every NAM process adds those classes to
 its registry: the bundler, the address builder, the other heads and the query
 planner.
 
+## State: not yet provided by the host
+
+NAM's built-in entity, attribute, affordance and context heads keep learned
+state in NAM's session store, read through a per-node LMDB cache. The host does
+not yet hand that store to an implementation: `EncoderHead` receives only
+`head_type` and `config`. Its `kv_on_cache_miss` flag (config key, or
+`NAM_<SLOT>_KV_ON_MISS`) is the host's miss policy for that store, and has no
+effect on an implementation that keeps no state.
+
+So, today:
+
+- an implementation must be **stateless** between records (it may load fixed
+  artifacts from its own package or an asset directory, like the ontology
+  heads);
+- a state store declared in `IMPL_META` and given to the head by the host is
+  planned. It will be an addition, so implementations written now keep working.
+
 ## 5. Tests
 
 - Put unit tests in `impls/<slot>/<name>/tests/`. Test the logic you wrote, not

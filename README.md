@@ -6,7 +6,9 @@ NAM gives every record an address. Each dimension of that address is a **slot**
 (`ontology`, `entity`, `attribute`, `affordance`, `context`, plus any slot added
 later), and a **head** fills a slot. One implementation is selected per slot,
 and an operator can swap the selection on a running cluster without rebuilding
-anything. This repository holds implementations that are developed outside NAM's
+anything. That holds today for heads that keep no state, such as the ontology
+heads; see [State](CONTRIBUTING.md#state-not-yet-provided-by-the-host) for the
+others. This repository holds implementations that are developed outside NAM's
 own tree, starting with the ontology slot:
 
 | Implementation | What it does |
