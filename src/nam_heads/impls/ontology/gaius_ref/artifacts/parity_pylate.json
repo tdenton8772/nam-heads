@@ -1,0 +1,841 @@
+{
+ "gaius_commit": "06cbf95dbba33d5e865bc76b80bb6d275bc67714",
+ "date": "2026-10-07",
+ "stack": {
+  "pylate": "1.6.0",
+  "sentence-transformers": "5.3.0",
+  "transformers": "5.15.0",
+  "torch": "2.13.0",
+  "onnxruntime": "1.30.0",
+  "tokenizers": "0.22.2"
+ },
+ "weights": "lightonai/ColBERT-Zero@43aefda07cf4fea7a13dbdab0eef8ecf78580d3d",
+ "onnx": "~/Development/nam-data/models/colbert-zero-ref-onnx",
+ "documents": 905,
+ "queries": 34,
+ "token_id_mismatches": 0,
+ "max_abs_query_vector_diff": 8.121132850646973e-07,
+ "max_abs_document_vector_diff": 7.413327693939209e-07,
+ "max_abs_score_diff": 5.364418029785156e-07,
+ "top1_agree": "34/34",
+ "top8_identical": "34/34",
+ "seconds": 53.8,
+ "rows": [
+  {
+   "query": "Antiprism. In geometry, an  antiprism or  is a polyhedron composed of two parall",
+   "pylate_top8": [
+    "MathematicaExample",
+    "MathematicalConcept",
+    "MathematicalLearningProcess",
+    "SysmlPartUsage",
+    "PhysicalManifestation",
+    "HeightMeasurement",
+    "MeasurementParameter",
+    "AnalyticMethod"
+   ],
+   "onnx_top8": [
+    "MathematicaExample",
+    "MathematicalConcept",
+    "MathematicalLearningProcess",
+    "SysmlPartUsage",
+    "PhysicalManifestation",
+    "HeightMeasurement",
+    "MeasurementParameter",
+    "AnalyticMethod"
+   ],
+   "pylate_top1_score": 0.720428
+  },
+  {
+   "query": "Til_the_End_of_Forever. Til the End of Forever is an album by Michael Bolton, re",
+   "pylate_top8": [
+    "ont00000069",
+    "ont00000055",
+    "ont00000037",
+    "ont00001058",
+    "ont00001309",
+    "ont00001226",
+    "ont00000024",
+    "ont00000053"
+   ],
+   "onnx_top8": [
+    "ont00000069",
+    "ont00000055",
+    "ont00000037",
+    "ont00001058",
+    "ont00001309",
+    "ont00001226",
+    "ont00000024",
+    "ont00000053"
+   ],
+   "pylate_top1_score": 0.711912
+  },
+  {
+   "query": "Benoy_Basu. Benoy Krishna Basu ( Binôe Boshu), Benoy Basu, or Benoy Bose (11 Sep",
+   "pylate_top8": [
+    "ont00001179",
+    "ont00001175",
+    "ont00001183",
+    "ont00001330",
+    "ont00001327",
+    "ont00000891",
+    "ont00002044",
+    "ont00001190"
+   ],
+   "onnx_top8": [
+    "ont00001179",
+    "ont00001175",
+    "ont00001183",
+    "ont00001330",
+    "ont00001327",
+    "ont00000891",
+    "ont00002044",
+    "ont00001190"
+   ],
+   "pylate_top1_score": 0.678414
+  },
+  {
+   "query": "Bosomtwe_District. Bosomtwe District is one of the 43 districts in Ashanti Regio",
+   "pylate_top8": [
+    "DistrictEmployee",
+    "LocalAuthority",
+    "GeographicRegion",
+    "AncestralSpiritCommunity",
+    "IndigenousChild",
+    "SocialServicesDepartment",
+    "StateGovernment",
+    "DepartmentalSortingRule"
+   ],
+   "onnx_top8": [
+    "DistrictEmployee",
+    "LocalAuthority",
+    "GeographicRegion",
+    "AncestralSpiritCommunity",
+    "IndigenousChild",
+    "SocialServicesDepartment",
+    "StateGovernment",
+    "DepartmentalSortingRule"
+   ],
+   "pylate_top1_score": 0.707891
+  },
+  {
+   "query": "Kaiser_Shipyards. The Kaiser Shipyards were seven major shipbuilding yards locat",
+   "pylate_top8": [
+    "StationLocation",
+    "FacilityInfrastructure",
+    "FloodInfrastructure",
+    "UtilityInfrastructure",
+    "LawEnforcementAgency",
+    "InspectionChecklistItem",
+    "AdministrativeOffice",
+    "CatalogStructure"
+   ],
+   "onnx_top8": [
+    "StationLocation",
+    "FacilityInfrastructure",
+    "FloodInfrastructure",
+    "UtilityInfrastructure",
+    "LawEnforcementAgency",
+    "InspectionChecklistItem",
+    "AdministrativeOffice",
+    "CatalogStructure"
+   ],
+   "pylate_top1_score": 0.680311
+  },
+  {
+   "query": "Dorian_Blues. Dorian Blues is a 2004 comedy-drama film about a gay teenager comi",
+   "pylate_top8": [
+    "Child",
+    "MinorPerson",
+    "YouthOrGuardian",
+    "DomesticViolenceSurvivor",
+    "YouthHealthStatus",
+    "ont00001262",
+    "ont00001226",
+    "ont00001037"
+   ],
+   "onnx_top8": [
+    "Child",
+    "MinorPerson",
+    "YouthOrGuardian",
+    "DomesticViolenceSurvivor",
+    "YouthHealthStatus",
+    "ont00001262",
+    "ont00001226",
+    "ont00001037"
+   ],
+   "pylate_top1_score": 0.679305
+  },
+  {
+   "query": "ESPN_Radio_College_GameDay. ESPN Radio College Gameday is a day-long talk radio ",
+   "pylate_top8": [
+    "CollegeResource",
+    "CMESeminar",
+    "CollegeCommunityMember",
+    "CollegeOfficialRole",
+    "AttendanceRecord",
+    "Course",
+    "ImproperConductEvent",
+    "ProtectedDisclosureProcess"
+   ],
+   "onnx_top8": [
+    "CollegeResource",
+    "CMESeminar",
+    "CollegeCommunityMember",
+    "CollegeOfficialRole",
+    "AttendanceRecord",
+    "Course",
+    "ImproperConductEvent",
+    "ProtectedDisclosureProcess"
+   ],
+   "pylate_top1_score": 0.712318
+  },
+  {
+   "query": "Clueso. Thomas Hübner (born 9 April 1980), better known by his stage name Clueso",
+   "pylate_top8": [
+    "ont00001262",
+    "Child",
+    "Person",
+    "ont00000069",
+    "MinorPerson",
+    "ont00001017",
+    "ont00000037",
+    "ont00000876"
+   ],
+   "onnx_top8": [
+    "ont00001262",
+    "Child",
+    "Person",
+    "ont00000069",
+    "MinorPerson",
+    "ont00001017",
+    "ont00000037",
+    "ont00000876"
+   ],
+   "pylate_top1_score": 0.710256
+  },
+  {
+   "query": "Oosthuizen is a village in the Dutch province of North Holland. It is a part of ",
+   "pylate_top8": [
+    "GeographicRegion",
+    "MunicipalPoolFacility",
+    "IndigenousChildRole",
+    "FloodInfrastructure",
+    "AncestralSpiritCommunity",
+    "IndigenousChild",
+    "ArcticRegion",
+    "ResidentialStreet"
+   ],
+   "onnx_top8": [
+    "GeographicRegion",
+    "MunicipalPoolFacility",
+    "IndigenousChildRole",
+    "FloodInfrastructure",
+    "AncestralSpiritCommunity",
+    "IndigenousChild",
+    "ArcticRegion",
+    "ResidentialStreet"
+   ],
+   "pylate_top1_score": 0.709357
+  },
+  {
+   "query": "Himal_Khabarpatrika. Himal Khabarpatrika () is a Nepali language monthly news ma",
+   "pylate_top8": [
+    "ScientificOrganization",
+    "AcademicJournal",
+    "OnlineChannel",
+    "CopiedDocument",
+    "OriginalDocument",
+    "EducationalCourse",
+    "PdfDocument",
+    "ConferenceProgramme"
+   ],
+   "onnx_top8": [
+    "ScientificOrganization",
+    "AcademicJournal",
+    "OnlineChannel",
+    "CopiedDocument",
+    "OriginalDocument",
+    "EducationalCourse",
+    "PdfDocument",
+    "ConferenceProgramme"
+   ],
+   "pylate_top1_score": 0.680461
+  },
+  {
+   "query": "Solina_Chau. Solina Chau Hoi Shuen (周凱旋) (born 1961) is a businesswoman in Hong ",
+   "pylate_top8": [
+    "ExperiencedMentor",
+    "ont00001262",
+    "CorporateEmployee",
+    "StudentEntrepreneur",
+    "ExternalBusinessPartner",
+    "ExecutiveTeamMember",
+    "MentorshipProgram",
+    "Person"
+   ],
+   "onnx_top8": [
+    "ExperiencedMentor",
+    "ont00001262",
+    "CorporateEmployee",
+    "StudentEntrepreneur",
+    "ExternalBusinessPartner",
+    "ExecutiveTeamMember",
+    "MentorshipProgram",
+    "Person"
+   ],
+   "pylate_top1_score": 0.661941
+  },
+  {
+   "query": "Viral_video. A viral video is a video that becomes popular through a viral proce",
+   "pylate_top8": [
+    "OnlineChannel",
+    "VideoSurveillanceActivity",
+    "OfflineChannel",
+    "ResponsiveWebsiteDevelopment",
+    "AnimationSequence",
+    "StandardWebTechnology",
+    "DisseminationChannel",
+    "WebPlatform"
+   ],
+   "onnx_top8": [
+    "OnlineChannel",
+    "VideoSurveillanceActivity",
+    "OfflineChannel",
+    "ResponsiveWebsiteDevelopment",
+    "AnimationSequence",
+    "StandardWebTechnology",
+    "DisseminationChannel",
+    "WebPlatform"
+   ],
+   "pylate_top1_score": 0.75746
+  },
+  {
+   "query": "Abdalonymus (; ) was a Phoenician botanist and gardener of royal descent, who be",
+   "pylate_top8": [
+    "GaulishTribe",
+    "SacredArtifact",
+    "AncestorVenerationCeremony",
+    "TraditionalReligiousHealerRole",
+    "EtymologicalDeciphering",
+    "AccessionedRecord",
+    "IndigenousChildRole",
+    "AncestralSpiritCommunity"
+   ],
+   "onnx_top8": [
+    "GaulishTribe",
+    "SacredArtifact",
+    "AncestorVenerationCeremony",
+    "TraditionalReligiousHealerRole",
+    "EtymologicalDeciphering",
+    "AccessionedRecord",
+    "IndigenousChildRole",
+    "AncestralSpiritCommunity"
+   ],
+   "pylate_top1_score": 0.679692
+  },
+  {
+   "query": "Montsevelier () is a former municipality in the district of Delémont in the cant",
+   "pylate_top8": [
+    "GeographicRegion",
+    "MunicipalPoolFacility",
+    "LocalAuthority",
+    "EconomicCondition",
+    "AncestralSpiritCommunity",
+    "ArcticRegion",
+    "ResidentialStreet",
+    "StationLocation"
+   ],
+   "onnx_top8": [
+    "GeographicRegion",
+    "MunicipalPoolFacility",
+    "LocalAuthority",
+    "EconomicCondition",
+    "AncestralSpiritCommunity",
+    "ArcticRegion",
+    "ResidentialStreet",
+    "StationLocation"
+   ],
+   "pylate_top1_score": 0.717812
+  },
+  {
+   "query": "Nişantaşı is a residential quarter in the Şişli district on the European side of",
+   "pylate_top8": [
+    "ResidentialStreet",
+    "GeographicRegion",
+    "NonprofitOrganization",
+    "PropertyOwner",
+    "MonetaryAmount",
+    "ServiceChargeRate",
+    "StationLocation",
+    "EconomicCondition"
+   ],
+   "onnx_top8": [
+    "ResidentialStreet",
+    "GeographicRegion",
+    "NonprofitOrganization",
+    "PropertyOwner",
+    "MonetaryAmount",
+    "ServiceChargeRate",
+    "StationLocation",
+    "EconomicCondition"
+   ],
+   "pylate_top1_score": 0.720153
+  },
+  {
+   "query": "Cordelia,_California. Cordelia is an unincorporated community in Solano County, ",
+   "pylate_top8": [
+    "GeographicRegion",
+    "ResidentialStreet",
+    "MailDropLocation",
+    "EvacuationInstruction",
+    "StationLocation",
+    "MunicipalPoolFacility",
+    "PickDropLocation",
+    "FacilityInfrastructure"
+   ],
+   "onnx_top8": [
+    "GeographicRegion",
+    "ResidentialStreet",
+    "MailDropLocation",
+    "EvacuationInstruction",
+    "StationLocation",
+    "MunicipalPoolFacility",
+    "PickDropLocation",
+    "FacilityInfrastructure"
+   ],
+   "pylate_top1_score": 0.730657
+  },
+  {
+   "query": "Hellenic_Conservatory. The Hellenic Conservatory () is an educational institutio",
+   "pylate_top8": [
+    "HigherEducationInstitution",
+    "Course",
+    "AcademicDegree",
+    "CollegeAdministration",
+    "CollegeCommunityMember",
+    "NonprofitOrganization",
+    "Curriculum",
+    "ProgramOfStudy"
+   ],
+   "onnx_top8": [
+    "HigherEducationInstitution",
+    "Course",
+    "AcademicDegree",
+    "CollegeAdministration",
+    "CollegeCommunityMember",
+    "NonprofitOrganization",
+    "Curriculum",
+    "ProgramOfStudy"
+   ],
+   "pylate_top1_score": 0.72536
+  },
+  {
+   "query": "Superior_Electoral_Court. The Superior Electoral Court (, TSE) is the highest bo",
+   "pylate_top8": [
+    "LocalAuthority",
+    "CriminalJusticeSystem",
+    "GeographicRegion",
+    "CriminalJusticeProcess",
+    "StateGovernment",
+    "LawEnforcementAgency",
+    "RegulatoryBody",
+    "CriminalJusticeAdministration"
+   ],
+   "onnx_top8": [
+    "LocalAuthority",
+    "CriminalJusticeSystem",
+    "GeographicRegion",
+    "CriminalJusticeProcess",
+    "StateGovernment",
+    "LawEnforcementAgency",
+    "RegulatoryBody",
+    "CriminalJusticeAdministration"
+   ],
+   "pylate_top1_score": 0.700531
+  },
+  {
+   "query": "Palo_Duro_High_School. Palo Duro High School is a school located in the city of ",
+   "pylate_top8": [
+    "CollegeResource",
+    "SchoolSecurityPolicy",
+    "Course",
+    "ProgramOfStudy",
+    "HigherEducationInstitution",
+    "CollegeCommunityMember",
+    "StudentTalentCultivation",
+    "AcademicCurriculumProgram"
+   ],
+   "onnx_top8": [
+    "CollegeResource",
+    "SchoolSecurityPolicy",
+    "Course",
+    "ProgramOfStudy",
+    "HigherEducationInstitution",
+    "CollegeCommunityMember",
+    "StudentTalentCultivation",
+    "AcademicCurriculumProgram"
+   ],
+   "pylate_top1_score": 0.728646
+  },
+  {
+   "query": "Fashoda_syndrome. Fashoda syndrome, or a 'Fashoda complex', is the name given to",
+   "pylate_top8": [
+    "PolicyViolation",
+    "PrevalenceRate",
+    "Child",
+    "HumanAgent",
+    "SpecialEducationalNeeds",
+    "MalnourishedChild",
+    "SkillImprovement",
+    "AbuseIndicator"
+   ],
+   "onnx_top8": [
+    "PolicyViolation",
+    "PrevalenceRate",
+    "Child",
+    "HumanAgent",
+    "SpecialEducationalNeeds",
+    "MalnourishedChild",
+    "SkillImprovement",
+    "AbuseIndicator"
+   ],
+   "pylate_top1_score": 0.70569
+  },
+  {
+   "query": "Corke. People named Corke include:\nAnya Corke (born 1990), Hong Kong chess grand",
+   "pylate_top8": [
+    "Child",
+    "ont00001262",
+    "ExperiencedMentor",
+    "NaturalPersonRegistrant",
+    "SkillImprovement",
+    "AcademicDegree",
+    "MathematicaExample",
+    "ExecutiveTeamMember"
+   ],
+   "onnx_top8": [
+    "Child",
+    "ont00001262",
+    "ExperiencedMentor",
+    "NaturalPersonRegistrant",
+    "SkillImprovement",
+    "AcademicDegree",
+    "MathematicaExample",
+    "ExecutiveTeamMember"
+   ],
+   "pylate_top1_score": 0.6913
+  },
+  {
+   "query": "John_Ratcliffe_Chapman. John Ratcliffe Chapman (January 9,1815 – February 4, 189",
+   "pylate_top8": [
+    "CommitteeMember",
+    "PanelReviewer",
+    "AccessionedRecord",
+    "PropertyOwner",
+    "ResponsibleOfficer",
+    "FinalConstructionInspectionProcess",
+    "CredentialedReviewer",
+    "ont00001262"
+   ],
+   "onnx_top8": [
+    "CommitteeMember",
+    "PanelReviewer",
+    "AccessionedRecord",
+    "PropertyOwner",
+    "ResponsibleOfficer",
+    "FinalConstructionInspectionProcess",
+    "CredentialedReviewer",
+    "ont00001262"
+   ],
+   "pylate_top1_score": 0.699995
+  },
+  {
+   "query": "Calvin_Pace. Calvin Lamar Pace (born October 28, 1980) is a former American foot",
+   "pylate_top8": [
+    "ont00001262",
+    "DomesticViolenceSurvivor",
+    "RetailLeadershipTeamMember",
+    "Person",
+    "CardiothoracicRadiologistRole",
+    "YoungPhysicianAmbassadorRole",
+    "CancerPatient",
+    "AccessionedRecord"
+   ],
+   "onnx_top8": [
+    "ont00001262",
+    "DomesticViolenceSurvivor",
+    "RetailLeadershipTeamMember",
+    "Person",
+    "CardiothoracicRadiologistRole",
+    "YoungPhysicianAmbassadorRole",
+    "CancerPatient",
+    "AccessionedRecord"
+   ],
+   "pylate_top1_score": 0.699925
+  },
+  {
+   "query": "Arithmetica_Universalis. Arithmetica Universalis (\"Universal Arithmetic\") is a m",
+   "pylate_top8": [
+    "MathematicaExample",
+    "MathematicalConcept",
+    "MathematicalLearningProcess",
+    "LectureSession",
+    "MonetaryAmount",
+    "decimal",
+    "AnalyticMethod",
+    "EstablishedDataFormat"
+   ],
+   "onnx_top8": [
+    "MathematicaExample",
+    "MathematicalConcept",
+    "MathematicalLearningProcess",
+    "LectureSession",
+    "MonetaryAmount",
+    "decimal",
+    "AnalyticMethod",
+    "EstablishedDataFormat"
+   ],
+   "pylate_top1_score": 0.706657
+  },
+  {
+   "query": "Do_You_Remember_(The_Beach_Boys_song). \"Do You Remember?\" is a song written by B",
+   "pylate_top8": [
+    "ont00000069",
+    "ont00000055",
+    "ont00000053",
+    "ont00000037",
+    "ont00001058",
+    "ont00001309",
+    "ont00001069",
+    "Child"
+   ],
+   "onnx_top8": [
+    "ont00000069",
+    "ont00000055",
+    "ont00000053",
+    "ont00000037",
+    "ont00001058",
+    "ont00001309",
+    "ont00001069",
+    "Child"
+   ],
+   "pylate_top1_score": 0.678733
+  },
+  {
+   "query": "Joachim_Stutschewsky. Joachim-Yehoyachin Stutschewsky, (, , 7 February 1891 – 14",
+   "pylate_top8": [
+    "SlavicLinguisticRoot",
+    "GaulishTribe",
+    "Age",
+    "EtymologicalDeciphering",
+    "MalnourishedChild",
+    "AccessionedRecord",
+    "ont00002075",
+    "MinorPerson"
+   ],
+   "onnx_top8": [
+    "SlavicLinguisticRoot",
+    "GaulishTribe",
+    "Age",
+    "EtymologicalDeciphering",
+    "MalnourishedChild",
+    "AccessionedRecord",
+    "ont00002075",
+    "MinorPerson"
+   ],
+   "pylate_top1_score": 0.678967
+  },
+  {
+   "query": "Boston_Society_of_Film_Critics_Awards_1996. Best Film: \n Trainspotting  \nThe 17t",
+   "pylate_top8": [
+    "CredentialedReviewer",
+    "ont00002002",
+    "PanelReviewer",
+    "ont00002044",
+    "ont00001037",
+    "ont00002039",
+    "ont00001045",
+    "ont00001179"
+   ],
+   "onnx_top8": [
+    "CredentialedReviewer",
+    "ont00002002",
+    "PanelReviewer",
+    "ont00002044",
+    "ont00001037",
+    "ont00002039",
+    "ont00001045",
+    "ont00001179"
+   ],
+   "pylate_top1_score": 0.68708
+  },
+  {
+   "query": "Rug_Rage. Rug Rage was the 1993 game of the FIRST Robotics Competition. In it, t",
+   "pylate_top8": [
+    "Raffle",
+    "QuantityPractice",
+    "SkillImprovement",
+    "TeamFunction",
+    "TeamEvaluation",
+    "ScrubbingActivity",
+    "RaffleConductingActivity",
+    "AnimationSequence"
+   ],
+   "onnx_top8": [
+    "Raffle",
+    "QuantityPractice",
+    "SkillImprovement",
+    "TeamFunction",
+    "TeamEvaluation",
+    "ScrubbingActivity",
+    "RaffleConductingActivity",
+    "AnimationSequence"
+   ],
+   "pylate_top1_score": 0.651104
+  },
+  {
+   "query": "Coal_hole. A coal hole is a hatch in the pavement (sidewalk, in US usage) above ",
+   "pylate_top8": [
+    "ResidentialStreet",
+    "ProdmlWellbore",
+    "TrafficPath",
+    "BuildingFloorStructure",
+    "FloodInfrastructure",
+    "EvacuationInstruction",
+    "HazardEvent",
+    "PickDropLocation"
+   ],
+   "onnx_top8": [
+    "ResidentialStreet",
+    "ProdmlWellbore",
+    "TrafficPath",
+    "BuildingFloorStructure",
+    "FloodInfrastructure",
+    "EvacuationInstruction",
+    "HazardEvent",
+    "PickDropLocation"
+   ],
+   "pylate_top1_score": 0.697455
+  },
+  {
+   "query": "The_Beach_Boys_discography. The Beach Boys are an American rock band formed in H",
+   "pylate_top8": [
+    "AccessionedRecord",
+    "ont00001069",
+    "ont00001058",
+    "ont00001179",
+    "ont00001226",
+    "ont00001037",
+    "ont00001239",
+    "ont00001073"
+   ],
+   "onnx_top8": [
+    "AccessionedRecord",
+    "ont00001069",
+    "ont00001058",
+    "ont00001179",
+    "ont00001226",
+    "ont00001037",
+    "ont00001239",
+    "ont00001073"
+   ],
+   "pylate_top1_score": 0.707198
+  },
+  {
+   "query": "who won the nobel prize in physics",
+   "pylate_top8": [
+    "ont00001262",
+    "BFO_0000030",
+    "ont00000020",
+    "ScientificMeeting",
+    "ont00000069",
+    "Student",
+    "ont00000037",
+    "ont00000055"
+   ],
+   "onnx_top8": [
+    "ont00001262",
+    "BFO_0000030",
+    "ont00000020",
+    "ScientificMeeting",
+    "ont00000069",
+    "Student",
+    "ont00000037",
+    "ont00000055"
+   ],
+   "pylate_top1_score": 0.652581
+  },
+  {
+   "query": "  leading and trailing whitespace\n\n",
+   "pylate_top8": [
+    "string",
+    "BFO_0000002",
+    "BFO_0000034",
+    "BFO_0000015",
+    "BFO_0000019",
+    "Board",
+    "BFO_0000030",
+    "BFO_0000023"
+   ],
+   "onnx_top8": [
+    "string",
+    "BFO_0000002",
+    "BFO_0000034",
+    "BFO_0000015",
+    "BFO_0000019",
+    "Board",
+    "BFO_0000030",
+    "BFO_0000023"
+   ],
+   "pylate_top1_score": 0.600231
+  },
+  {
+   "query": "Paris",
+   "pylate_top8": [
+    "ont00001262",
+    "BFO_0000030",
+    "ont00001180",
+    "BFO_0000019",
+    "Person",
+    "BFO_0000001",
+    "Board",
+    "BFO_0000003"
+   ],
+   "onnx_top8": [
+    "ont00001262",
+    "BFO_0000030",
+    "ont00001180",
+    "BFO_0000019",
+    "Person",
+    "BFO_0000001",
+    "Board",
+    "BFO_0000003"
+   ],
+   "pylate_top1_score": 0.612822
+  },
+  {
+   "query": "a German-born theoretical physicist",
+   "pylate_top8": [
+    "ont00001262",
+    "Student",
+    "Person",
+    "BFO_0000017",
+    "BFO_0000001",
+    "ResearchQuestion",
+    "ResearchProject",
+    "BFO_0000030"
+   ],
+   "onnx_top8": [
+    "ont00001262",
+    "Student",
+    "Person",
+    "BFO_0000017",
+    "BFO_0000001",
+    "ResearchQuestion",
+    "ResearchProject",
+    "BFO_0000030"
+   ],
+   "pylate_top1_score": 0.658069
+  }
+ ]
+}

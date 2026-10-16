@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nam-heads"
+version = "0.1.0"
+description = "Pluggable head implementations for NAM, and the SDK they are written against"
+readme = "README.md"
+license = {text = "Apache-2.0"}
+requires-python = ">=3.10"
+dependencies = ["numpy>=1.24"]
+
+[project.optional-dependencies]
+# ColBERT-style MaxSim heads (gaius, gaius_ref) at run time
+maxsim = ["onnxruntime>=1.16", "tokenizers>=0.15"]
+# rebuilding TBox artifacts (classes.json, gaius_ref's SDG extension)
+tbox = ["rdflib>=7", "owlready2>=0.46"]
+# retraining the codebook
+train = ["scipy>=1.11"]
+dev = ["pytest>=7", "nam-heads[maxsim,train]"]
+
+[project.entry-points."nam.heads"]
+"ontology.codebook" = "nam_heads.impls.ontology.codebook"
+"ontology.abstain" = "nam_heads.impls.ontology.abstain"
+"ontology.gaius" = "nam_heads.impls.ontology.gaius"
+"ontology.gaius_ref" = "nam_heads.impls.ontology.gaius_ref"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"*" = ["*.json", "*.npz", "*.md"]
+
+[tool.pytest.ini_options]
+testpaths = ["src/nam_heads", "tests"]
+addopts = "-p no:cacheprovider"

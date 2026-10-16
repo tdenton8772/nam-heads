@@ -1,0 +1,30 @@
+nam-heads
+Copyright 2026 Tyler Denton and contributors
+
+Licensed under the Apache License, Version 2.0 (LICENSE).
+
+This package includes data derived from third-party works:
+
+- Basic Formal Ontology (BFO) 2020, https://github.com/BFO-ontology/BFO-2020,
+  licensed CC BY 4.0. Class labels, definitions and axioms in
+  src/nam_heads/ontology/classes.json.
+
+- Common Core Ontologies (CCO) v2.2,
+  https://github.com/CommonCoreOntology/CommonCoreOntologies, licensed BSD 3-Clause.
+  Class labels, definitions and axioms in src/nam_heads/ontology/classes.json
+  and src/nam_heads/impls/ontology/gaius/artifacts/tbox_annotations.json.
+
+- The SDG ontology from sdg-corpora (https://github.com/zndx/sdg-corpora,
+  commit c4138b4d), licensed Apache-2.0, and loader logic from gaius
+  (https://github.com/zndx/gaius, commit 06cbf95d), licensed Apache-2.0.
+  Used by src/nam_heads/impls/ontology/gaius_ref.
+
+- Wikipedia passages (https://en.wikipedia.org), licensed CC BY-SA 4.0, used
+  as fixed probe and evaluation texts in
+  src/nam_heads/impls/ontology/codebook/artifacts/parser_probe.json and the
+  evaluation artifacts under src/nam_heads/impls/ontology/*/artifacts/.
+  Those files are distributed under CC BY-SA 4.0.
+
+Model weights are not included. The MaxSim heads load ONNX exports of
+lightonai/ColBERT-Zero and lightonai/ModernColBERT-embed-base, which carry
+their own licenses.

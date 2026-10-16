@@ -1,0 +1,275 @@
+{
+ "gaius_commit": "06cbf95dbba33d5e865bc76b80bb6d275bc67714",
+ "sdg_corpora_commit": "c4138b4d020ef29b5056f6584560b133577ecbe1",
+ "model": "lightonai/ColBERT-Zero@43aefda07cf4fea7a13dbdab0eef8ecf78580d3d",
+ "date": "2026-10-07",
+ "what": "gaius's own tbox.py (load_pinned_imports + ontology_for_owlready), tbox_maxsim.py (materialize_tbox, maxsim_tbox_topk k=8) and colbert.py, unmodified, against gaius_ref",
+ "stack": {
+  "pylate": "1.6.0",
+  "sentence-transformers": "5.3.0",
+  "transformers": "5.15.0",
+  "torch": "2.13.0",
+  "qdrant-client": "1.12.1 (local mode)",
+  "owlready2": "0.49",
+  "rdflib": "7.5.0"
+ },
+ "seams": [
+  "tbox_maxsim._qdrant -> QdrantClient(':memory:')",
+  "tbox_maxsim._zero -> ColBERTZeroEmbedder(local snapshot, device='cpu')"
+ ],
+ "gaius_points": 905,
+ "inputs": 34,
+ "top1_identical": 34,
+ "top8_identical": 34,
+ "max_abs_score_diff": 3.044521779127507e-07,
+ "examples": [
+  {
+   "text": "Antiprism. In geometry, an  antiprism or  is a polyhedron composed of two parallel direct ",
+   "gaius_top3": [
+    [
+     "MathematicaExample",
+     0.720428
+    ],
+    [
+     "MathematicalConcept",
+     0.715397
+    ],
+    [
+     "MathematicalLearningProcess",
+     0.713702
+    ]
+   ],
+   "gaius_ref_top3": [
+    [
+     "MathematicaExample",
+     0.720428
+    ],
+    [
+     "MathematicalConcept",
+     0.715397
+    ],
+    [
+     "MathematicalLearningProcess",
+     0.713702
+    ]
+   ]
+  },
+  {
+   "text": "Til_the_End_of_Forever. Til the End of Forever is an album by Michael Bolton, released in ",
+   "gaius_top3": [
+    [
+     "ont00000069",
+     0.711912
+    ],
+    [
+     "ont00000055",
+     0.711582
+    ],
+    [
+     "ont00000037",
+     0.711412
+    ]
+   ],
+   "gaius_ref_top3": [
+    [
+     "ont00000069",
+     0.711912
+    ],
+    [
+     "ont00000055",
+     0.711581
+    ],
+    [
+     "ont00000037",
+     0.711412
+    ]
+   ]
+  },
+  {
+   "text": "Benoy_Basu. Benoy Krishna Basu ( Binôe Boshu), Benoy Basu, or Benoy Bose (11 September 190",
+   "gaius_top3": [
+    [
+     "ont00001179",
+     0.678414
+    ],
+    [
+     "ont00001175",
+     0.677693
+    ],
+    [
+     "ont00001183",
+     0.67713
+    ]
+   ],
+   "gaius_ref_top3": [
+    [
+     "ont00001179",
+     0.678414
+    ],
+    [
+     "ont00001175",
+     0.677692
+    ],
+    [
+     "ont00001183",
+     0.67713
+    ]
+   ]
+  },
+  {
+   "text": "Bosomtwe_District. Bosomtwe District is one of the 43 districts in Ashanti Region, Ghana. ",
+   "gaius_top3": [
+    [
+     "DistrictEmployee",
+     0.707891
+    ],
+    [
+     "LocalAuthority",
+     0.703281
+    ],
+    [
+     "GeographicRegion",
+     0.702961
+    ]
+   ],
+   "gaius_ref_top3": [
+    [
+     "DistrictEmployee",
+     0.707891
+    ],
+    [
+     "LocalAuthority",
+     0.703281
+    ],
+    [
+     "GeographicRegion",
+     0.702961
+    ]
+   ]
+  },
+  {
+   "text": "Kaiser_Shipyards. The Kaiser Shipyards were seven major shipbuilding yards located on the ",
+   "gaius_top3": [
+    [
+     "StationLocation",
+     0.680311
+    ],
+    [
+     "FacilityInfrastructure",
+     0.678169
+    ],
+    [
+     "FloodInfrastructure",
+     0.677
+    ]
+   ],
+   "gaius_ref_top3": [
+    [
+     "StationLocation",
+     0.680311
+    ],
+    [
+     "FacilityInfrastructure",
+     0.678169
+    ],
+    [
+     "FloodInfrastructure",
+     0.677
+    ]
+   ]
+  },
+  {
+   "text": "Dorian_Blues. Dorian Blues is a 2004 comedy-drama film about a gay teenager coming to term",
+   "gaius_top3": [
+    [
+     "Child",
+     0.679305
+    ],
+    [
+     "MinorPerson",
+     0.678623
+    ],
+    [
+     "YouthOrGuardian",
+     0.67749
+    ]
+   ],
+   "gaius_ref_top3": [
+    [
+     "Child",
+     0.679305
+    ],
+    [
+     "MinorPerson",
+     0.678623
+    ],
+    [
+     "YouthOrGuardian",
+     0.67749
+    ]
+   ]
+  },
+  {
+   "text": "ESPN_Radio_College_GameDay. ESPN Radio College Gameday is a day-long talk radio show on ES",
+   "gaius_top3": [
+    [
+     "CollegeResource",
+     0.712318
+    ],
+    [
+     "CMESeminar",
+     0.706574
+    ],
+    [
+     "CollegeCommunityMember",
+     0.706521
+    ]
+   ],
+   "gaius_ref_top3": [
+    [
+     "CollegeResource",
+     0.712318
+    ],
+    [
+     "CMESeminar",
+     0.706574
+    ],
+    [
+     "CollegeCommunityMember",
+     0.706521
+    ]
+   ]
+  },
+  {
+   "text": "Clueso. Thomas Hübner (born 9 April 1980), better known by his stage name Clueso (), is a ",
+   "gaius_top3": [
+    [
+     "ont00001262",
+     0.710256
+    ],
+    [
+     "Child",
+     0.708326
+    ],
+    [
+     "Person",
+     0.708325
+    ]
+   ],
+   "gaius_ref_top3": [
+    [
+     "ont00001262",
+     0.710256
+    ],
+    [
+     "Child",
+     0.708326
+    ],
+    [
+     "Person",
+     0.708325
+    ]
+   ]
+  }
+ ]
+}

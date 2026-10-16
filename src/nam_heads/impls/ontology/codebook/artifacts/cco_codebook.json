@@ -1,0 +1,1036 @@
+{
+ "accept": 0.18,
+ "class_labels": {
+  "BFO:0000015": "process",
+  "BFO:0000023": "role",
+  "BFO:0000040": "material entity",
+  "cco:ont00000032": "Church",
+  "cco:ont00000071": "Town",
+  "cco:ont00000109": "Act of Military Force",
+  "cco:ont00000192": "Facility",
+  "cco:ont00000226": "Transportation Facility",
+  "cco:ont00000228": "Planned Act",
+  "cco:ont00000247": "Road",
+  "cco:ont00000265": "Election",
+  "cco:ont00000274": "Armed Force",
+  "cco:ont00000318": "Disease",
+  "cco:ont00000400": "Park",
+  "cco:ont00000408": "Government Organization",
+  "cco:ont00000443": "Commercial Organization",
+  "cco:ont00000455": "Act of Ceremony",
+  "cco:ont00000460": "Local Administrative Region",
+  "cco:ont00000472": "Geospatial Region",
+  "cco:ont00000487": "Geospatial Location",
+  "cco:ont00000496": "Natural Language",
+  "cco:ont00000507": "Ethnic Group",
+  "cco:ont00000549": "Water Transportation Artifact",
+  "cco:ont00000551": "Organism",
+  "cco:ont00000563": "Hydrographic Feature",
+  "cco:ont00000564": "Educational Organization",
+  "cco:ont00000641": "Entertainment Facility",
+  "cco:ont00000718": "Village",
+  "cco:ont00000853": "Descriptive Information Content Entity",
+  "cco:ont00000873": "Physiographic Feature",
+  "cco:ont00000887": "City",
+  "cco:ont00000914": "Group of Persons",
+  "cco:ont00000958": "Information Content Entity",
+  "cco:ont00000965": "Prescriptive Information Content Entity",
+  "cco:ont00000995": "Material Artifact",
+  "cco:ont00001011": "Automobile",
+  "cco:ont00001014": "Proper Name",
+  "cco:ont00001078": "Airport",
+  "cco:ont00001081": "Geographic Feature",
+  "cco:ont00001099": "Bridge",
+  "cco:ont00001152": "Government Domain",
+  "cco:ont00001180": "Organization",
+  "cco:ont00001262": "Person",
+  "cco:ont00001302": "Civil Organization",
+  "cco:ont00002009": "Video",
+  "cco:ont00002039": "Document Content Entity"
+ },
+ "classes": [
+  "BFO:0000015",
+  "BFO:0000023",
+  "BFO:0000040",
+  "cco:ont00000032",
+  "cco:ont00000071",
+  "cco:ont00000109",
+  "cco:ont00000192",
+  "cco:ont00000226",
+  "cco:ont00000228",
+  "cco:ont00000247",
+  "cco:ont00000265",
+  "cco:ont00000274",
+  "cco:ont00000318",
+  "cco:ont00000400",
+  "cco:ont00000408",
+  "cco:ont00000443",
+  "cco:ont00000455",
+  "cco:ont00000460",
+  "cco:ont00000472",
+  "cco:ont00000487",
+  "cco:ont00000496",
+  "cco:ont00000507",
+  "cco:ont00000549",
+  "cco:ont00000551",
+  "cco:ont00000563",
+  "cco:ont00000564",
+  "cco:ont00000641",
+  "cco:ont00000718",
+  "cco:ont00000853",
+  "cco:ont00000873",
+  "cco:ont00000887",
+  "cco:ont00000914",
+  "cco:ont00000958",
+  "cco:ont00000965",
+  "cco:ont00000995",
+  "cco:ont00001011",
+  "cco:ont00001014",
+  "cco:ont00001078",
+  "cco:ont00001081",
+  "cco:ont00001099",
+  "cco:ont00001152",
+  "cco:ont00001180",
+  "cco:ont00001262",
+  "cco:ont00001302",
+  "cco:ont00002009",
+  "cco:ont00002039"
+ ],
+ "created": "2026-10-04T15:44:36Z",
+ "dataset": {
+  "path": "/Users/tylerdenton/Development/nam-data/ontology/cco_sentences_v3.jsonl",
+  "sentences": 330379,
+  "sha256": "2ad56a404ff07a030549c2a8c91ba7a3c543bb7f0e2dd31eead4375e7b818014"
+ },
+ "eval": {
+  "record": {
+   "abstained": 0.0034,
+   "accepted_precision": 0.8267,
+   "exact": 0.7752,
+   "exact_or_coarse": 0.8239,
+   "n": 10810,
+   "per_class": {
+    "BFO:0000002": {
+     "label": "continuant",
+     "precision": 0.0,
+     "recall": 0.0,
+     "support": 0
+    },
+    "BFO:0000003": {
+     "label": "occurrent",
+     "precision": 0.0,
+     "recall": 0.0,
+     "support": 0
+    },
+    "BFO:0000004": {
+     "label": "independent continuant",
+     "precision": 0.0,
+     "recall": 0.0,
+     "support": 0
+    },
+    "BFO:0000015": {
+     "label": "process",
+     "precision": 0.729,
+     "recall": 0.397,
+     "support": 237
+    },
+    "BFO:0000023": {
+     "label": "role",
+     "precision": 0.833,
+     "recall": 0.233,
+     "support": 43
+    },
+    "BFO:0000029": {
+     "label": "site",
+     "precision": 0.0,
+     "recall": 0.0,
+     "support": 0
+    },
+    "BFO:0000030": {
+     "label": "object",
+     "precision": 0.0,
+     "recall": 0.0,
+     "support": 0
+    },
+    "BFO:0000031": {
+     "label": "generically dependent continuant",
+     "precision": 0.0,
+     "recall": 0.0,
+     "support": 0
+    },
+    "BFO:0000040": {
+     "label": "material entity",
+     "precision": 0.429,
+     "recall": 0.683,
+     "support": 120
+    },
+    "cco:ont00000005": {
+     "label": "Act",
+     "precision": 0.0,
+     "recall": 0.0,
+     "support": 0
+    },
+    "cco:ont00000032": {
+     "label": "Church",
+     "precision": 0.808,
+     "recall": 0.75,
+     "support": 28
+    },
+    "cco:ont00000071": {
+     "label": "Town",
+     "precision": 0.79,
+     "recall": 0.696,
+     "support": 92
+    },
+    "cco:ont00000109": {
+     "label": "Act of Military Force",
+     "precision": 0.84,
+     "recall": 0.75,
+     "support": 28
+    },
+    "cco:ont00000192": {
+     "label": "Facility",
+     "precision": 0.692,
+     "recall": 0.544,
+     "support": 149
+    },
+    "cco:ont00000226": {
+     "label": "Transportation Facility",
+     "precision": 0.885,
+     "recall": 0.961,
+     "support": 152
+    },
+    "cco:ont00000228": {
+     "label": "Planned Act",
+     "precision": 0.873,
+     "recall": 0.789,
+     "support": 209
+    },
+    "cco:ont00000247": {
+     "label": "Road",
+     "precision": 0.893,
+     "recall": 0.929,
+     "support": 126
+    },
+    "cco:ont00000254": {
+     "label": "Transportation Artifact",
+     "precision": 0.0,
+     "recall": 0.0,
+     "support": 0
+    },
+    "cco:ont00000265": {
+     "label": "Election",
+     "precision": 0.969,
+     "recall": 0.969,
+     "support": 32
+    },
+    "cco:ont00000274": {
+     "label": "Armed Force",
+     "precision": 0.762,
+     "recall": 0.782,
+     "support": 78
+    },
+    "cco:ont00000300": {
+     "label": "Group of Agents",
+     "precision": 0.0,
+     "recall": 0.0,
+     "support": 0
+    },
+    "cco:ont00000318": {
+     "label": "Disease",
+     "precision": 0.944,
+     "recall": 0.586,
+     "support": 29
+    },
+    "cco:ont00000400": {
+     "label": "Park",
+     "precision": 0.811,
+     "recall": 0.878,
+     "support": 98
+    },
+    "cco:ont00000408": {
+     "label": "Government Organization",
+     "precision": 0.76,
+     "recall": 0.644,
+     "support": 59
+    },
+    "cco:ont00000443": {
+     "label": "Commercial Organization",
+     "precision": 0.717,
+     "recall": 0.569,
+     "support": 232
+    },
+    "cco:ont00000455": {
+     "label": "Act of Ceremony",
+     "precision": 0.871,
+     "recall": 0.844,
+     "support": 32
+    },
+    "cco:ont00000460": {
+     "label": "Local Administrative Region",
+     "precision": 0.813,
+     "recall": 0.854,
+     "support": 178
+    },
+    "cco:ont00000472": {
+     "label": "Geospatial Region",
+     "precision": 0.761,
+     "recall": 0.617,
+     "support": 243
+    },
+    "cco:ont00000487": {
+     "label": "Geospatial Location",
+     "precision": 0.779,
+     "recall": 0.479,
+     "support": 140
+    },
+    "cco:ont00000496": {
+     "label": "Natural Language",
+     "precision": 0.84,
+     "recall": 0.656,
+     "support": 32
+    },
+    "cco:ont00000507": {
+     "label": "Ethnic Group",
+     "precision": 0.571,
+     "recall": 0.414,
+     "support": 29
+    },
+    "cco:ont00000549": {
+     "label": "Water Transportation Artifact",
+     "precision": 0.667,
+     "recall": 0.667,
+     "support": 33
+    },
+    "cco:ont00000551": {
+     "label": "Organism",
+     "precision": 0.843,
+     "recall": 0.86,
+     "support": 357
+    },
+    "cco:ont00000563": {
+     "label": "Hydrographic Feature",
+     "precision": 0.821,
+     "recall": 0.926,
+     "support": 94
+    },
+    "cco:ont00000564": {
+     "label": "Educational Organization",
+     "precision": 0.836,
+     "recall": 0.914,
+     "support": 256
+    },
+    "cco:ont00000574": {
+     "label": "Environmental Feature",
+     "precision": 0.0,
+     "recall": 0.0,
+     "support": 0
+    },
+    "cco:ont00000641": {
+     "label": "Entertainment Facility",
+     "precision": 0.732,
+     "recall": 0.87,
+     "support": 69
+    },
+    "cco:ont00000718": {
+     "label": "Village",
+     "precision": 0.673,
+     "recall": 0.85,
+     "support": 160
+    },
+    "cco:ont00000853": {
+     "label": "Descriptive Information Content Entity",
+     "precision": 0.879,
+     "recall": 0.831,
+     "support": 237
+    },
+    "cco:ont00000873": {
+     "label": "Physiographic Feature",
+     "precision": 0.867,
+     "recall": 0.75,
+     "support": 52
+    },
+    "cco:ont00000887": {
+     "label": "City",
+     "precision": 0.597,
+     "recall": 0.537,
+     "support": 80
+    },
+    "cco:ont00000914": {
+     "label": "Group of Persons",
+     "precision": 0.789,
+     "recall": 0.65,
+     "support": 317
+    },
+    "cco:ont00000958": {
+     "label": "Information Content Entity",
+     "precision": 0.889,
+     "recall": 0.742,
+     "support": 1026
+    },
+    "cco:ont00000965": {
+     "label": "Prescriptive Information Content Entity",
+     "precision": 0.769,
+     "recall": 0.423,
+     "support": 71
+    },
+    "cco:ont00000995": {
+     "label": "Material Artifact",
+     "precision": 0.602,
+     "recall": 0.351,
+     "support": 336
+    },
+    "cco:ont00001011": {
+     "label": "Automobile",
+     "precision": 0.895,
+     "recall": 0.654,
+     "support": 26
+    },
+    "cco:ont00001014": {
+     "label": "Proper Name",
+     "precision": 0.926,
+     "recall": 0.768,
+     "support": 82
+    },
+    "cco:ont00001078": {
+     "label": "Airport",
+     "precision": 0.895,
+     "recall": 0.919,
+     "support": 37
+    },
+    "cco:ont00001081": {
+     "label": "Geographic Feature",
+     "precision": 0.688,
+     "recall": 0.451,
+     "support": 308
+    },
+    "cco:ont00001099": {
+     "label": "Bridge",
+     "precision": 0.833,
+     "recall": 0.909,
+     "support": 33
+    },
+    "cco:ont00001152": {
+     "label": "Government Domain",
+     "precision": 0.73,
+     "recall": 0.683,
+     "support": 281
+    },
+    "cco:ont00001180": {
+     "label": "Organization",
+     "precision": 0.748,
+     "recall": 0.716,
+     "support": 497
+    },
+    "cco:ont00001203": {
+     "label": "Delimiting Domain",
+     "precision": 0.0,
+     "recall": 0.0,
+     "support": 0
+    },
+    "cco:ont00001262": {
+     "label": "Person",
+     "precision": 0.928,
+     "recall": 0.956,
+     "support": 3199
+    },
+    "cco:ont00001302": {
+     "label": "Civil Organization",
+     "precision": 0.658,
+     "recall": 0.432,
+     "support": 111
+    },
+    "cco:ont00001326": {
+     "label": "Land Transportation Artifact",
+     "precision": 0.0,
+     "recall": 0.0,
+     "support": 0
+    },
+    "cco:ont00002001": {
+     "label": "Media Content Entity",
+     "precision": 0.0,
+     "recall": 0.0,
+     "support": 0
+    },
+    "cco:ont00002009": {
+     "label": "Video",
+     "precision": 0.868,
+     "recall": 0.895,
+     "support": 332
+    },
+    "cco:ont00002039": {
+     "label": "Document Content Entity",
+     "precision": 0.825,
+     "recall": 0.691,
+     "support": 450
+    }
+   },
+   "top_confusions": [
+    [
+     "Information Content Entity",
+     "Person",
+     36
+    ],
+    [
+     "Geospatial Region",
+     "Village",
+     35
+    ],
+    [
+     "process",
+     "material entity",
+     28
+    ],
+    [
+     "Information Content Entity",
+     "material entity",
+     26
+    ],
+    [
+     "Group of Persons",
+     "Person",
+     26
+    ],
+    [
+     "Group of Persons",
+     "Organization",
+     25
+    ],
+    [
+     "Material Artifact",
+     "Information Content Entity",
+     23
+    ],
+    [
+     "Document Content Entity",
+     "Person",
+     22
+    ],
+    [
+     "Information Content Entity",
+     "Video",
+     22
+    ],
+    [
+     "Facility",
+     "Geographic Feature",
+     20
+    ],
+    [
+     "Geographic Feature",
+     "Entertainment Facility",
+     20
+    ],
+    [
+     "Information Content Entity",
+     "Document Content Entity",
+     19
+    ],
+    [
+     "process",
+     "Person",
+     18
+    ],
+    [
+     "Document Content Entity",
+     "material entity",
+     17
+    ],
+    [
+     "Information Content Entity",
+     "Organization",
+     16
+    ]
+   ]
+  },
+  "sentence": {
+   "abstained": 0.0047,
+   "accepted_precision": 0.734,
+   "exact": 0.6567,
+   "exact_or_coarse": 0.7305,
+   "n": 32991,
+   "per_class": {
+    "BFO:0000002": {
+     "label": "continuant",
+     "precision": 0.0,
+     "recall": 0.0,
+     "support": 0
+    },
+    "BFO:0000003": {
+     "label": "occurrent",
+     "precision": 0.0,
+     "recall": 0.0,
+     "support": 0
+    },
+    "BFO:0000004": {
+     "label": "independent continuant",
+     "precision": 0.0,
+     "recall": 0.0,
+     "support": 0
+    },
+    "BFO:0000015": {
+     "label": "process",
+     "precision": 0.502,
+     "recall": 0.212,
+     "support": 586
+    },
+    "BFO:0000017": {
+     "label": "realizable entity",
+     "precision": 0.0,
+     "recall": 0.0,
+     "support": 0
+    },
+    "BFO:0000023": {
+     "label": "role",
+     "precision": 0.792,
+     "recall": 0.204,
+     "support": 93
+    },
+    "BFO:0000029": {
+     "label": "site",
+     "precision": 0.0,
+     "recall": 0.0,
+     "support": 0
+    },
+    "BFO:0000030": {
+     "label": "object",
+     "precision": 0.0,
+     "recall": 0.0,
+     "support": 0
+    },
+    "BFO:0000031": {
+     "label": "generically dependent continuant",
+     "precision": 0.0,
+     "recall": 0.0,
+     "support": 0
+    },
+    "BFO:0000040": {
+     "label": "material entity",
+     "precision": 0.312,
+     "recall": 0.555,
+     "support": 362
+    },
+    "cco:ont00000005": {
+     "label": "Act",
+     "precision": 0.0,
+     "recall": 0.0,
+     "support": 0
+    },
+    "cco:ont00000032": {
+     "label": "Church",
+     "precision": 0.66,
+     "recall": 0.376,
+     "support": 93
+    },
+    "cco:ont00000071": {
+     "label": "Town",
+     "precision": 0.66,
+     "recall": 0.418,
+     "support": 232
+    },
+    "cco:ont00000109": {
+     "label": "Act of Military Force",
+     "precision": 0.651,
+     "recall": 0.562,
+     "support": 73
+    },
+    "cco:ont00000192": {
+     "label": "Facility",
+     "precision": 0.489,
+     "recall": 0.335,
+     "support": 466
+    },
+    "cco:ont00000226": {
+     "label": "Transportation Facility",
+     "precision": 0.789,
+     "recall": 0.883,
+     "support": 462
+    },
+    "cco:ont00000228": {
+     "label": "Planned Act",
+     "precision": 0.718,
+     "recall": 0.626,
+     "support": 476
+    },
+    "cco:ont00000247": {
+     "label": "Road",
+     "precision": 0.748,
+     "recall": 0.783,
+     "support": 345
+    },
+    "cco:ont00000254": {
+     "label": "Transportation Artifact",
+     "precision": 0.0,
+     "recall": 0.0,
+     "support": 0
+    },
+    "cco:ont00000265": {
+     "label": "Election",
+     "precision": 0.833,
+     "recall": 0.769,
+     "support": 78
+    },
+    "cco:ont00000274": {
+     "label": "Armed Force",
+     "precision": 0.685,
+     "recall": 0.649,
+     "support": 225
+    },
+    "cco:ont00000300": {
+     "label": "Group of Agents",
+     "precision": 0.0,
+     "recall": 0.0,
+     "support": 0
+    },
+    "cco:ont00000318": {
+     "label": "Disease",
+     "precision": 0.816,
+     "recall": 0.392,
+     "support": 79
+    },
+    "cco:ont00000400": {
+     "label": "Park",
+     "precision": 0.704,
+     "recall": 0.633,
+     "support": 270
+    },
+    "cco:ont00000408": {
+     "label": "Government Organization",
+     "precision": 0.667,
+     "recall": 0.436,
+     "support": 165
+    },
+    "cco:ont00000443": {
+     "label": "Commercial Organization",
+     "precision": 0.587,
+     "recall": 0.363,
+     "support": 727
+    },
+    "cco:ont00000455": {
+     "label": "Act of Ceremony",
+     "precision": 0.795,
+     "recall": 0.593,
+     "support": 59
+    },
+    "cco:ont00000460": {
+     "label": "Local Administrative Region",
+     "precision": 0.539,
+     "recall": 0.578,
+     "support": 450
+    },
+    "cco:ont00000472": {
+     "label": "Geospatial Region",
+     "precision": 0.505,
+     "recall": 0.372,
+     "support": 631
+    },
+    "cco:ont00000487": {
+     "label": "Geospatial Location",
+     "precision": 0.624,
+     "recall": 0.286,
+     "support": 395
+    },
+    "cco:ont00000496": {
+     "label": "Natural Language",
+     "precision": 0.652,
+     "recall": 0.459,
+     "support": 98
+    },
+    "cco:ont00000507": {
+     "label": "Ethnic Group",
+     "precision": 0.49,
+     "recall": 0.3,
+     "support": 80
+    },
+    "cco:ont00000549": {
+     "label": "Water Transportation Artifact",
+     "precision": 0.582,
+     "recall": 0.351,
+     "support": 111
+    },
+    "cco:ont00000551": {
+     "label": "Organism",
+     "precision": 0.729,
+     "recall": 0.671,
+     "support": 976
+    },
+    "cco:ont00000563": {
+     "label": "Hydrographic Feature",
+     "precision": 0.685,
+     "recall": 0.736,
+     "support": 242
+    },
+    "cco:ont00000564": {
+     "label": "Educational Organization",
+     "precision": 0.777,
+     "recall": 0.797,
+     "support": 823
+    },
+    "cco:ont00000574": {
+     "label": "Environmental Feature",
+     "precision": 0.0,
+     "recall": 0.0,
+     "support": 0
+    },
+    "cco:ont00000641": {
+     "label": "Entertainment Facility",
+     "precision": 0.671,
+     "recall": 0.721,
+     "support": 204
+    },
+    "cco:ont00000718": {
+     "label": "Village",
+     "precision": 0.602,
+     "recall": 0.562,
+     "support": 457
+    },
+    "cco:ont00000853": {
+     "label": "Descriptive Information Content Entity",
+     "precision": 0.822,
+     "recall": 0.591,
+     "support": 499
+    },
+    "cco:ont00000873": {
+     "label": "Physiographic Feature",
+     "precision": 0.63,
+     "recall": 0.415,
+     "support": 164
+    },
+    "cco:ont00000887": {
+     "label": "City",
+     "precision": 0.514,
+     "recall": 0.323,
+     "support": 223
+    },
+    "cco:ont00000914": {
+     "label": "Group of Persons",
+     "precision": 0.638,
+     "recall": 0.456,
+     "support": 844
+    },
+    "cco:ont00000958": {
+     "label": "Information Content Entity",
+     "precision": 0.728,
+     "recall": 0.585,
+     "support": 2616
+    },
+    "cco:ont00000965": {
+     "label": "Prescriptive Information Content Entity",
+     "precision": 0.7,
+     "recall": 0.333,
+     "support": 189
+    },
+    "cco:ont00000995": {
+     "label": "Material Artifact",
+     "precision": 0.361,
+     "recall": 0.206,
+     "support": 934
+    },
+    "cco:ont00001011": {
+     "label": "Automobile",
+     "precision": 0.756,
+     "recall": 0.425,
+     "support": 80
+    },
+    "cco:ont00001014": {
+     "label": "Proper Name",
+     "precision": 0.8,
+     "recall": 0.531,
+     "support": 143
+    },
+    "cco:ont00001078": {
+     "label": "Airport",
+     "precision": 0.777,
+     "recall": 0.763,
+     "support": 114
+    },
+    "cco:ont00001081": {
+     "label": "Geographic Feature",
+     "precision": 0.532,
+     "recall": 0.31,
+     "support": 878
+    },
+    "cco:ont00001099": {
+     "label": "Bridge",
+     "precision": 0.786,
+     "recall": 0.72,
+     "support": 107
+    },
+    "cco:ont00001152": {
+     "label": "Government Domain",
+     "precision": 0.585,
+     "recall": 0.431,
+     "support": 794
+    },
+    "cco:ont00001180": {
+     "label": "Organization",
+     "precision": 0.602,
+     "recall": 0.504,
+     "support": 1394
+    },
+    "cco:ont00001203": {
+     "label": "Delimiting Domain",
+     "precision": 0.0,
+     "recall": 0.0,
+     "support": 0
+    },
+    "cco:ont00001262": {
+     "label": "Person",
+     "precision": 0.857,
+     "recall": 0.93,
+     "support": 12190
+    },
+    "cco:ont00001302": {
+     "label": "Civil Organization",
+     "precision": 0.58,
+     "recall": 0.27,
+     "support": 322
+    },
+    "cco:ont00001326": {
+     "label": "Land Transportation Artifact",
+     "precision": 0.0,
+     "recall": 0.0,
+     "support": 0
+    },
+    "cco:ont00001327": {
+     "label": "Social Act",
+     "precision": 0.0,
+     "recall": 0.0,
+     "support": 0
+    },
+    "cco:ont00002001": {
+     "label": "Media Content Entity",
+     "precision": 0.0,
+     "recall": 0.0,
+     "support": 0
+    },
+    "cco:ont00002009": {
+     "label": "Video",
+     "precision": 0.716,
+     "recall": 0.492,
+     "support": 984
+    },
+    "cco:ont00002039": {
+     "label": "Document Content Entity",
+     "precision": 0.677,
+     "recall": 0.419,
+     "support": 1258
+    }
+   },
+   "top_confusions": [
+    [
+     "Information Content Entity",
+     "Person",
+     338
+    ],
+    [
+     "Video",
+     "Person",
+     242
+    ],
+    [
+     "Document Content Entity",
+     "Person",
+     203
+    ],
+    [
+     "Group of Persons",
+     "Person",
+     137
+    ],
+    [
+     "Organization",
+     "Person",
+     123
+    ],
+    [
+     "Person",
+     "Information Content Entity",
+     111
+    ],
+    [
+     "Information Content Entity",
+     "material entity",
+     110
+    ],
+    [
+     "Material Artifact",
+     "Information Content Entity",
+     85
+    ],
+    [
+     "process",
+     "Person",
+     81
+    ],
+    [
+     "process",
+     "material entity",
+     75
+    ],
+    [
+     "Commercial Organization",
+     "Person",
+     71
+    ],
+    [
+     "Group of Persons",
+     "Information Content Entity",
+     67
+    ],
+    [
+     "Material Artifact",
+     "Person",
+     65
+    ],
+    [
+     "Organism",
+     "Person",
+     62
+    ],
+    [
+     "Information Content Entity",
+     "Video",
+     60
+    ]
+   ]
+  },
+  "validation_nll": 1.41
+ },
+ "feature_spec": "d651d169274cbbff47f510086fc773351d3f938ff91b711d9fa27d1a7d192b18",
+ "margin": 0.0,
+ "parser": "810f77a0e700b5e3b9acaad2da7ef4c9894e9f0b65af417f60915d6055eda858",
+ "rollups": {
+  "BFO:0000030": "BFO:0000040",
+  "cco:ont00000007": "BFO:0000015",
+  "cco:ont00000046": "cco:ont00001152",
+  "cco:ont00000126": "cco:ont00001152",
+  "cco:ont00000139": "cco:ont00001152",
+  "cco:ont00000251": "cco:ont00000472",
+  "cco:ont00000445": "cco:ont00000995",
+  "cco:ont00000562": "cco:ont00000551",
+  "cco:ont00000616": "cco:ont00000958",
+  "cco:ont00000674": "BFO:0000001",
+  "cco:ont00000837": "cco:ont00000914",
+  "cco:ont00000871": "cco:ont00000551",
+  "cco:ont00000921": "BFO:0000001",
+  "cco:ont00000934": "cco:ont00001152",
+  "cco:ont00001043": "cco:ont00000995",
+  "cco:ont00001088": "BFO:0000001",
+  "cco:ont00001164": "cco:ont00001152",
+  "cco:ont00001175": "cco:ont00000965",
+  "cco:ont00002040": "cco:ont00002039"
+ },
+ "schema": "nam-ontology-cco-codebook/1",
+ "tbox": "58541b4a95361d8381ba21e6f35afa35edb5cff8670abd527d22ddd5471d388e",
+ "temperature": 0.016981534290429628,
+ "training": {
+  "centroids": 240,
+  "idf": "smoothed, training split",
+  "lvq_epochs": 10,
+  "max_k": 8,
+  "min_support": 150,
+  "per_centroid": 400,
+  "precision_target": 0.85
+ }
+}

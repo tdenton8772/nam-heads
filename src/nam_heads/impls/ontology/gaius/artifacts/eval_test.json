@@ -1,0 +1,272 @@
+{
+ "measured": "2026-10-07, offline, Apple M3 Pro (11 cores), base nam/main 0167b7c4",
+ "protocol": "codebook head's held-out test split (cco_sentences_v3.jsonl, split_of == test, labels rolled up to its 46 classes), production text, rule-backend parse; tools/evaluate.py",
+ "records": 10810,
+ "codebook": {
+  "n": 10810,
+  "exact": 0.7752,
+  "exact_or_coarse": 0.8239,
+  "abstained": 0.0034,
+  "accepted_precision": 0.8267,
+  "person_share": 0.3049,
+  "distinct_classes": 60,
+  "predicted_top": [
+   [
+    "Person",
+    0.3049
+   ],
+   [
+    "Information Content Entity",
+    0.0841
+   ],
+   [
+    "Organization",
+    0.0493
+   ],
+   [
+    "Document Content Entity",
+    0.0349
+   ],
+   [
+    "Organism",
+    0.0346
+   ],
+   [
+    "Video",
+    0.0316
+   ],
+   [
+    "material entity",
+    0.0315
+   ],
+   [
+    "Government Domain",
+    0.026
+   ],
+   [
+    "Educational Organization",
+    0.0259
+   ],
+   [
+    "Group of Persons",
+    0.0244
+   ]
+  ],
+  "top_confusions": [
+   [
+    "Information Content Entity",
+    "Person",
+    36
+   ],
+   [
+    "Geospatial Region",
+    "Village",
+    35
+   ],
+   [
+    "process",
+    "material entity",
+    28
+   ],
+   [
+    "Information Content Entity",
+    "material entity",
+    26
+   ],
+   [
+    "Group of Persons",
+    "Person",
+    26
+   ],
+   [
+    "Group of Persons",
+    "Organization",
+    25
+   ],
+   [
+    "Material Artifact",
+    "Information Content Entity",
+    23
+   ],
+   [
+    "Document Content Entity",
+    "Person",
+    22
+   ],
+   [
+    "Information Content Entity",
+    "Video",
+    22
+   ],
+   [
+    "Facility",
+    "Geographic Feature",
+    20
+   ],
+   [
+    "Geographic Feature",
+    "Entertainment Facility",
+    20
+   ],
+   [
+    "Information Content Entity",
+    "Document Content Entity",
+    19
+   ]
+  ]
+ },
+ "gaius": {
+  "n": 10810,
+  "exact": 0.3215,
+  "exact_or_coarse": 0.343,
+  "abstained": 0.0,
+  "accepted_precision": 0.343,
+  "person_share": 0.2373,
+  "distinct_classes": 69,
+  "predicted_top": [
+   [
+    "Person",
+    0.2373
+   ],
+   [
+    "Organism",
+    0.065
+   ],
+   [
+    "Video",
+    0.0431
+   ],
+   [
+    "Village",
+    0.0429
+   ],
+   [
+    "Educational Organization",
+    0.0379
+   ],
+   [
+    "Election",
+    0.0378
+   ],
+   [
+    "Church",
+    0.0335
+   ],
+   [
+    "Armed Force",
+    0.031
+   ],
+   [
+    "City",
+    0.0291
+   ],
+   [
+    "Automobile",
+    0.027
+   ]
+  ],
+  "top_confusions": [
+   [
+    "Information Content Entity",
+    "Person",
+    356
+   ],
+   [
+    "Person",
+    "Election",
+    237
+   ],
+   [
+    "Person",
+    "Armed Force",
+    144
+   ],
+   [
+    "Geospatial Region",
+    "Village",
+    131
+   ],
+   [
+    "Person",
+    "Video",
+    108
+   ],
+   [
+    "Document Content Entity",
+    "Person",
+    108
+   ],
+   [
+    "Person",
+    "Church",
+    104
+   ],
+   [
+    "Information Content Entity",
+    "Organism",
+    100
+   ],
+   [
+    "Information Content Entity",
+    "Video",
+    95
+   ],
+   [
+    "Organism",
+    "Person",
+    89
+   ],
+   [
+    "Person",
+    "Educational Organization",
+    85
+   ],
+   [
+    "Person",
+    "Commercial Organization",
+    85
+   ]
+  ]
+ },
+ "agreement": {
+  "same_class": 0.3203,
+  "same_or_subsumes": 0.4856
+ },
+ "sentences_classified_mean": {
+  "codebook": 10.22,
+  "gaius": 2.98
+ },
+ "gaius_confidence_mean": 0.1616,
+ "latency_single_thread": {
+  "codebook": {
+   "mean_ms": 2.1,
+   "p50_ms": 1.5,
+   "p95_ms": 5.22,
+   "n": 300
+  },
+  "gaius": {
+   "mean_ms": 146.36,
+   "p50_ms": 137.41,
+   "p95_ms": 244.82,
+   "n": 300
+  },
+  "gaius_record_only": {
+   "mean_ms": 49.53,
+   "p50_ms": 44.52,
+   "p95_ms": 86.25,
+   "n": 300
+  },
+  "load_avg_1m": 12.1
+ },
+ "latency_note": "one thread (ORT intra-op 1, BLAS 1), 300 test records, heads interleaved per record; the machine was shared (1-min load ~12 on 11 cores). A 20-record pilot under lighter load: codebook 0.76 ms, gaius 120 ms, gaius record-only 37 ms.",
+ "memory": {
+  "codebook": {
+   "peak_rss_mb": 75.0,
+   "head_mb": 25.8
+  },
+  "gaius": {
+   "peak_rss_mb": 745.4,
+   "head_mb": 696.4
+  }
+ }
+}

@@ -1,0 +1,221 @@
+{
+ "accept": 0.0,
+ "candidates": [
+  "BFO:0000015",
+  "BFO:0000016",
+  "BFO:0000017",
+  "BFO:0000023",
+  "BFO:0000027",
+  "BFO:0000029",
+  "BFO:0000030",
+  "BFO:0000040",
+  "BFO:0000141",
+  "cco:ont00000003",
+  "cco:ont00000005",
+  "cco:ont00000032",
+  "cco:ont00000052",
+  "cco:ont00000053",
+  "cco:ont00000071",
+  "cco:ont00000109",
+  "cco:ont00000192",
+  "cco:ont00000226",
+  "cco:ont00000228",
+  "cco:ont00000247",
+  "cco:ont00000254",
+  "cco:ont00000265",
+  "cco:ont00000274",
+  "cco:ont00000300",
+  "cco:ont00000318",
+  "cco:ont00000400",
+  "cco:ont00000408",
+  "cco:ont00000443",
+  "cco:ont00000455",
+  "cco:ont00000460",
+  "cco:ont00000472",
+  "cco:ont00000487",
+  "cco:ont00000496",
+  "cco:ont00000507",
+  "cco:ont00000549",
+  "cco:ont00000551",
+  "cco:ont00000562",
+  "cco:ont00000563",
+  "cco:ont00000564",
+  "cco:ont00000574",
+  "cco:ont00000618",
+  "cco:ont00000641",
+  "cco:ont00000686",
+  "cco:ont00000713",
+  "cco:ont00000718",
+  "cco:ont00000853",
+  "cco:ont00000873",
+  "cco:ont00000887",
+  "cco:ont00000914",
+  "cco:ont00000958",
+  "cco:ont00000965",
+  "cco:ont00000995",
+  "cco:ont00001011",
+  "cco:ont00001014",
+  "cco:ont00001078",
+  "cco:ont00001081",
+  "cco:ont00001099",
+  "cco:ont00001152",
+  "cco:ont00001175",
+  "cco:ont00001180",
+  "cco:ont00001197",
+  "cco:ont00001203",
+  "cco:ont00001262",
+  "cco:ont00001302",
+  "cco:ont00001326",
+  "cco:ont00001327",
+  "cco:ont00002001",
+  "cco:ont00002009",
+  "cco:ont00002039"
+ ],
+ "class_set_id": "bfo2020-cco2.2:387de378f09c93f3",
+ "created": "2026-10-07T11:52:55Z",
+ "model": {
+  "name": "lightonai/ColBERT-Zero",
+  "onnx_sha256": "5574d4ae138c582ea0eb779cef02a6f45c5dc73744cb421c7b4de7f152e27195",
+  "precision": "fp32",
+  "source": {
+   "1_Dense/model.safetensors": "d5d1b9bdd11cb7c4d7efa6a48edef52f98cbe79f0368df82b1b49905d522daf2",
+   "model.safetensors": "a4217337716a3f8f102082ba84fbe29396b20001486738938639183e0d9e39be",
+   "tokenizer.json": "898c16d22cc76424df313a088e75ffcbcfd567e87f96adf75a644eb10cb6ae19"
+  }
+ },
+ "probes": [
+  {
+   "class": "cco:ont00001262",
+   "class_text": "Person. An Animal that is a member of the species Homo sapiens.",
+   "score": 0.897421,
+   "text": "a German-born theoretical physicist"
+  },
+  {
+   "class": "cco:ont00000551",
+   "class_text": "Organism. An Object that is an Animal or Plant.",
+   "score": 0.901499,
+   "text": "a species of moth"
+  },
+  {
+   "class": "cco:ont00002039",
+   "class_text": "Document Content Entity. A Media Content Entity that consists of a series of paragraphs of text or diagrams that are intended to be carried by physical pieces of paper or an electronic word processor file.",
+   "score": 0.879197,
+   "text": "a 2004 book"
+  }
+ ],
+ "query": {
+  "aggregation": "MaxSim mean over all query tokens (gaius tbox_maxsim)",
+  "max_length": 39,
+  "text": "lead defining phrase, else title + lead"
+ },
+ "schema": "nam-gaius-calibration/1",
+ "style": "gaius",
+ "tbox": {
+  "bfo": {
+   "sha256": "a7f0385eb859e707fa81bad532ff252427dc3490e3896a929332016fc53d9ece",
+   "url": "https://raw.githubusercontent.com/BFO-ontology/BFO-2020/master/21838-2/owl/bfo-core.ttl",
+   "version": "http://purl.obolibrary.org/obo/bfo/2020/bfo-core.ttl"
+  },
+  "cco": {
+   "sha256": "a9453382b25b40781c181d6ba44981f228abb76d90d548846713adba9baadb42",
+   "url": "https://raw.githubusercontent.com/CommonCoreOntology/CommonCoreOntologies/v2.2/src/cco-merged/CommonCoreOntologiesMerged.ttl",
+   "version": "https://www.commoncoreontologies.org/2026-08-13/CommonCoreOntologiesMerged"
+  }
+ },
+ "temperature": 0.004180412283592644,
+ "validation": {
+  "chosen": {
+   "abstained": 0.0,
+   "accept": 0.0,
+   "accepted_precision": 0.3324,
+   "exact": 0.3112,
+   "exact_or_coarse": 0.3324
+  },
+  "curve": [
+   {
+    "abstained": 0.0,
+    "accept": 0.0,
+    "accepted_precision": 0.3324,
+    "exact": 0.3112,
+    "exact_or_coarse": 0.3324
+   },
+   {
+    "abstained": 0.0,
+    "accept": 0.05,
+    "accepted_precision": 0.344,
+    "exact": 0.2199,
+    "exact_or_coarse": 0.344
+   },
+   {
+    "abstained": 0.0002,
+    "accept": 0.1,
+    "accepted_precision": 0.3898,
+    "exact": 0.1352,
+    "exact_or_coarse": 0.3897
+   },
+   {
+    "abstained": 0.0262,
+    "accept": 0.15,
+    "accepted_precision": 0.4581,
+    "exact": 0.1255,
+    "exact_or_coarse": 0.4461
+   },
+   {
+    "abstained": 0.0426,
+    "accept": 0.2,
+    "accepted_precision": 0.5178,
+    "exact": 0.0977,
+    "exact_or_coarse": 0.4957
+   },
+   {
+    "abstained": 0.0547,
+    "accept": 0.3,
+    "accepted_precision": 0.6278,
+    "exact": 0.0816,
+    "exact_or_coarse": 0.5934
+   },
+   {
+    "abstained": 0.065,
+    "accept": 0.4,
+    "accepted_precision": 0.6829,
+    "exact": 0.0667,
+    "exact_or_coarse": 0.6385
+   },
+   {
+    "abstained": 0.0694,
+    "accept": 0.5,
+    "accepted_precision": 0.7249,
+    "exact": 0.0668,
+    "exact_or_coarse": 0.6745
+   },
+   {
+    "abstained": 0.0729,
+    "accept": 0.6,
+    "accepted_precision": 0.7525,
+    "exact": 0.0488,
+    "exact_or_coarse": 0.6976
+   },
+   {
+    "abstained": 0.0743,
+    "accept": 0.7,
+    "accepted_precision": 0.8348,
+    "exact": 0.0417,
+    "exact_or_coarse": 0.7728
+   },
+   {
+    "abstained": 0.077,
+    "accept": 0.8,
+    "accepted_precision": 0.9092,
+    "exact": 0.034,
+    "exact_or_coarse": 0.8391
+   }
+  ],
+  "dataset": {
+   "path": "~/Development/nam-data/ontology/cco_sentences_v3.jsonl",
+   "sha256": "2ad56a404ff07a030549c2a8c91ba7a3c543bb7f0e2dd31eead4375e7b818014"
+  },
+  "nll": 3.617,
+  "records": 10960
+ },
+ "verbalizations_sha256": "1e560dd722eee3a7b0bc0593779a984fce4edda6c2f4672be7325bd8c2bed319"
+}
