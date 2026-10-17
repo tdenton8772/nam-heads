@@ -10,7 +10,7 @@ after the ontology slot, ``ontology_result``.
 import os
 from abc import ABC, abstractmethod
 from dataclasses import dataclass
-from typing import Dict, List, Optional
+from typing import Any, Dict, List, Optional
 
 from . import host
 
@@ -52,9 +52,13 @@ class EncoderHead(ABC):
     ``emittable_classes`` (``nam_heads.sdk.testing`` checks the contract).
     """
 
-    def __init__(self, head_type: str, config: Optional[Dict] = None):
+    def __init__(self, head_type: str, config: Optional[Dict] = None,
+                 stores: Optional[Dict[str, Any]] = None):
         self.head_type = head_type
         self.config = config or {}
+        # Head stores by name (IMPL_META "stores"): handed in by the host, or
+        # opened through host.open_store on first use.
+        self._stores: Dict[str, Any] = dict(stores or {})
         self._records_processed = 0
         self._errors = 0
         self._total_encode_ms = 0.0
@@ -99,6 +103,23 @@ class EncoderHead(ABC):
         if "_axis_encoder" not in self.__dict__:
             self.__dict__["_axis_encoder"] = self.create_axis_encoder()
         return self.__dict__["_axis_encoder"]
+
+    def store(self, name: str):
+        """The handle of one store this implementation declares in
+        ``IMPL_META["stores"]`` (nam_heads.sdk.store)."""
+        if name not in self._stores:
+            from .store import parse_specs
+            import sys
+
+            meta = getattr(sys.modules.get(type(self).__module__), "IMPL_META", None) or {}
+            specs = {sp.name: sp for sp in parse_specs(meta.get("stores"))}
+            if name not in specs:
+                raise KeyError(f"{type(self).__name__} declares no store {name!r} "
+                               f"(IMPL_META stores: {sorted(specs)})")
+            mode = self.config.get("store_mode", "ingest")
+            self._stores[name] = host.open_store(specs[name], self.head_type,
+                                                 meta.get("name", type(self).__name__), mode)
+        return self._stores[name]
 
     def get_metrics(self) -> Dict:
         """Return observable metrics."""

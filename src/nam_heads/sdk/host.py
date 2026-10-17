@@ -14,6 +14,10 @@ by importing NAM, so the package installs and tests on its own:
 - ``ort_session_options(max_threads)``: onnxruntime options sized for this
   process. The host's version reads the container's CPU limit; the fallback
   uses ``os.cpu_count()``.
+- ``open_store(spec, slot, impl, mode)``: a head store handle
+  (``nam_heads.sdk.store``). The host's backs it with its session bucket and
+  node caches; the fallback is an in-memory store, shared by scope within the
+  process, writable unless ``mode`` is "query".
 """
 
 import os
@@ -80,3 +84,29 @@ def ort_session_options(max_threads: Optional[int] = None):
     opts.intra_op_num_threads = n
     opts.inter_op_num_threads = 1
     return opts
+
+
+_store_factory: Optional[Callable[..., Any]] = None
+_memory_stores: dict = {}
+
+
+def set_store_factory(factory: Optional[Callable[..., Any]]) -> None:
+    """``factory(spec, slot, impl, mode) -> HeadStore``."""
+    global _store_factory
+    _store_factory = factory
+
+
+def open_store(spec, slot: str, impl: str, mode: str = "ingest"):
+    """A handle on one declared store for an implementation of ``slot``."""
+    if _store_factory is not None:
+        return _store_factory(spec, slot, impl, mode)
+    from .store import MemoryStore
+
+    key = (slot, spec.name) if spec.scope == "slot" else (slot, impl, spec.name)
+    data = _memory_stores.setdefault(key, {})
+    return MemoryStore(spec, writable=(mode != "query"), shared=data)
+
+
+def reset_memory_stores() -> None:
+    """Drop the fallback stores (tests)."""
+    _memory_stores.clear()

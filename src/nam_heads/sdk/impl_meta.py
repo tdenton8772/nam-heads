@@ -234,4 +234,10 @@ def read_impl_meta(head: Path) -> Tuple[Optional[Dict[str, Any]], List[str]]:
     ont = meta.get("ontology")
     if ont and not (head.parent / ont["artifact"]).is_file():
         probs.append(f"ontology artifact {ont['artifact']} is not in the package")
+    if "stores" in meta:
+        from .store import StoreSpecError, parse_specs
+        try:
+            parse_specs(meta["stores"])
+        except StoreSpecError as e:
+            probs.append(f"IMPL_META stores: {e}")
     return meta, probs
