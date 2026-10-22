@@ -12,8 +12,19 @@ IDS = [f"{i.slot}.{i.name}" for i in IMPLS]
 
 
 def test_this_repo_registers_its_heads():
-    assert {"ontology.codebook", "ontology.abstain", "ontology.gaius",
-            "ontology.gaius_ref"} <= set(IDS)
+    assert {"ontology.codebook", "ontology.abstain", "ontology.gaius", "ontology.gaius_ref", "nlp.rule",
+            "entity.default", "attribute.default", "affordance.default", "context.default"} <= set(IDS)
+
+
+def _load_or_skip(impl):
+    """Load the implementation's class; skip when it imports the NAM host (the default heads use NAM's src
+    modules) and NAM is not on the path (set NAM_SRC)."""
+    try:
+        return T.load_class(impl)
+    except ModuleNotFoundError as e:
+        if (e.name or "").split(".")[0] == "src":
+            pytest.skip(f"needs the NAM host ({e.name}); set NAM_SRC")
+        raise
 
 
 @pytest.mark.parametrize("impl", IMPLS, ids=IDS)
@@ -23,11 +34,32 @@ def test_impl_meta_is_well_formed(impl):
     assert (meta["slot"], meta["name"]) == (impl.slot, impl.name)
 
 
-@pytest.mark.parametrize("impl", IMPLS, ids=IDS)
+HEADS = [i for i in IMPLS if i.slot != "nlp"]
+PARSERS = [i for i in IMPLS if i.slot == "nlp"]
+
+
+@pytest.mark.parametrize("impl", HEADS, ids=[f"{i.slot}.{i.name}" for i in HEADS])
 def test_one_encoder_head_subclass(impl):
     if T.unavailable(impl):
         pytest.skip(f"unavailable here: {T.unavailable(impl)}")
-    T.load_class(impl)
+    _load_or_skip(impl)
+
+
+@pytest.mark.parametrize("impl", PARSERS, ids=[f"{i.slot}.{i.name}" for i in PARSERS])
+def test_one_parser_subclass(impl):
+    """An NLP plugin (slot nlp, contract parser-v1) defines exactly one Parser subclass in head.py."""
+    import importlib
+    import inspect
+    from nam_heads.sdk.parser import Parser
+    try:
+        mod = importlib.import_module(impl.module)
+    except ModuleNotFoundError as e:
+        if (e.name or "").split(".")[0] == "src":
+            pytest.skip(f"needs the NAM host ({e.name}); set NAM_SRC")
+        raise
+    found = [c for _, c in inspect.getmembers(mod, inspect.isclass)
+             if issubclass(c, Parser) and c is not Parser and c.__module__ == mod.__name__]
+    assert len(found) == 1, found
 
 
 @pytest.mark.parametrize("impl", [i for i in IMPLS if i.slot == "ontology"],
