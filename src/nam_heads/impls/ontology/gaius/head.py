@@ -81,6 +81,8 @@ IMPL_META = {
     "name": "gaius",
     "version": VERSION,
     "contract": "ontology-v1",
+    "output": "bfo-cco-2.2",
+    "resources": {"cpu": 2.0, "memory_mb": 2048, "workers": 1},
     "classes": _calibration().get("class_set_id", "unknown"),
     "description": ("Gaius-inspired zero-shot typing: BFO 2020 / CCO v2.2 class verbalizations "
                     "(label + definition) embedded with ModernColBERT-embed-base; a record's defining phrase "

@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "nam-heads"
-version = "0.2.0"
+version = "0.3.0"
 description = "Pluggable head implementations for NAM, and the SDK they are written against"
 readme = "README.md"
 license = {text = "Apache-2.0"}
@@ -19,6 +19,9 @@ tbox = ["rdflib>=7", "owlready2>=0.46"]
 # retraining the codebook
 train = ["scipy>=1.11"]
 dev = ["pytest>=7", "nam-heads[maxsim,train]"]
+
+[project.scripts]
+nam-heads = "nam_heads.sdk.package:main"
 
 [project.entry-points."nam.heads"]
 "ontology.codebook" = "nam_heads.impls.ontology.codebook"

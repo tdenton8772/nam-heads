@@ -97,6 +97,8 @@ IMPL_META = {
     "name": "gaius_ref",
     "version": VERSION,
     "contract": "ontology-v1",
+    "output": "bfo-cco-2.2+sdg",
+    "resources": {"cpu": 2.0, "memory_mb": 2048, "workers": 1},
     "description": ("gaius's TBox MaxSim, reproduced: the 905 classes gaius's own loader reads "
                     "from the certified SDG ontology (gaius 06cbf95d, sdg-corpora c4138b4d), the "
                     "record text typed by ColBERT-Zero MaxSim / query tokens. Record class = "

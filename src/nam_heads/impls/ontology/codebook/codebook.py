@@ -14,14 +14,18 @@ fitted on held-out data). ``resolve`` settles on one class:
 3. else ``bfo:entity`` (BFO:0000001): nothing beyond existence is asserted.
 
 The artifact is validated strictly on load and the head refuses to start on any
-mismatch: feature spec, parser fingerprint, TBox, class set, shapes. There is
-no fallback to built-in defaults.
+mismatch of feature spec, TBox, class set or shapes. There is no fallback to
+built-in defaults. A parser fingerprint that differs from the one the codebook
+was trained on is NOT a refusal: an NLP change rarely moves the cues far enough
+to matter (owner, 2026-10-22: "we can alert. not sure we should disable"), so the
+codebook loads and records ``parser_mismatch`` for the host to alert on.
 """
 
 from __future__ import annotations
 
 import hashlib
 import json
+import logging
 from dataclasses import dataclass, field
 from functools import lru_cache
 from pathlib import Path
@@ -37,6 +41,9 @@ UNCLASSIFIED = "BFO:0000001"
 ARTIFACT_DIR = Path(__file__).parent / "artifacts"
 ARTIFACT_STEM = "cco_codebook"
 SCHEMA = "nam-ontology-cco-codebook/1"
+
+
+logger = logging.getLogger(__name__)
 
 
 class CodebookError(RuntimeError):
@@ -127,8 +134,15 @@ class Codebook:
             problems.append("feature spec differs from features.py")
         if meta.get("tbox") != tbox_fingerprint():
             problems.append("TBox (BFO/CCO sources) differs from the registry")
-        if check_parser and meta.get("parser") != parser_fingerprint():
-            problems.append("NLP parser output on the probe set differs from the one it was trained on")
+        parser_mismatch = None
+        if check_parser:
+            running = parser_fingerprint()
+            if meta.get("parser") != running:
+                # Loads anyway: an alert, not a refusal (module docstring).
+                parser_mismatch = {"trained": meta.get("parser"), "running": running}
+                logger.warning("codebook.parser_mismatch trained=%s running=%s -- the NLP parser's output on the "
+                               "probe set differs from the one this codebook was trained on",
+                               str(meta.get("parser"))[:12], running[:12])
         reg = get_registry()
         classes = meta.get("classes") or []
         bad = [c for c in classes if not reg.is_class(c)]
@@ -152,8 +166,10 @@ class Codebook:
                 problems.append(f"{k} missing or not positive")
         if problems:
             raise CodebookError("codebook artifact rejected: " + "; ".join(problems))
-        return cls(centroids, centroid_class, classes, meta["temperature"], meta["accept"], meta,
+        book = cls(centroids, centroid_class, classes, meta["temperature"], meta["accept"], meta,
                    idf=idf)
+        book.parser_mismatch = parser_mismatch
+        return book
 
     def save(self, directory: Path = ARTIFACT_DIR, stem: str = ARTIFACT_STEM) -> None:
         directory = Path(directory)

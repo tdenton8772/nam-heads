@@ -16,6 +16,9 @@ IMPL_META = {
     "name": "abstain",
     "version": "1.0.0",
     "contract": "ontology-v1",
+    "output": "bfo-cco-2.2",
+    "resources": {"cpu": 0.25, "memory_mb": 256, "workers": 1},
+    "dependencies": [],
     "description": "Types every record bfo:entity: the control for what the ontology head contributes.",
     "requires": [],
 }

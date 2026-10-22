@@ -55,6 +55,9 @@ IMPL_META = {
     "name": "codebook",
     "version": "1.0.0",
     "contract": "ontology-v1",
+    "output": "bfo-cco-2.2",
+    "resources": {"cpu": 2.0, "memory_mb": 2048, "workers": 1},
+    "dependencies": [],
     "description": ("BFO 2020 / CCO v2.2 class from a trained codebook over the host parse's "
                     "sentence cues; backs off to an ancestor, abstains to bfo:entity."),
     "requires": ["numpy"],
@@ -62,10 +65,10 @@ IMPL_META = {
 
 DEFAULT_CONFIG = {
     "codebook_dir": None,          # None -> this package's artifacts/
-    # Refuse to load unless the host's parser reproduces the cues the codebook
-    # was trained on (codebook.parser_fingerprint). False only where no host
-    # parser exists (tests of this package on its own): the head then still
-    # loads, and reads whatever parse the caller passes in.
+    # Compare the host parser's cues on the probe set with the ones the codebook
+    # was trained on (codebook.parser_fingerprint); a difference is reported as
+    # parser_mismatch (metric ontology_parser_mismatch), never a refusal. False
+    # only where no host parser exists (tests of this package on its own).
     "check_parser": True,
     "max_addresses": 5,            # resolved class + runner-up trained classes
     "min_address_confidence": 0.05,
@@ -154,6 +157,7 @@ class OntologyEncoder(EncoderHead):
             "classes": len(self.codebook.classes),
             "accept": self.codebook.accept,
             "parser_checked": self.check_parser,
+            "parser_mismatch": getattr(self.codebook, "parser_mismatch", None),
             "diagnostics": self.enable_diagnostics,
             "unknown_threshold": self.unknown_threshold,
             "collapse_entropy_threshold": self.collapse_entropy_threshold,
@@ -169,6 +173,8 @@ class OntologyEncoder(EncoderHead):
         history.
         """
         out = super().get_metrics()
+        # 1 while the host's parser differs from the one the codebook was trained on (an alert, not a stop)
+        out["ontology_parser_mismatch"] = 1 if getattr(self.codebook, "parser_mismatch", None) else 0
         if self.diagnostics is None:
             return out
         snap = self.diagnostics.snapshot()

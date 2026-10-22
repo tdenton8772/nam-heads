@@ -14,6 +14,9 @@ Every implementation's ``head.py`` carries a module-level literal
         "ontology": {"name": "sdg", "artifact": "artifacts/x.json"},  # ontology slot only
         "stores": [...],               # state it keeps (nam_heads.sdk.store)
         "learner": {"module": "learner", "gpu": {...}},  # its learner part (nam_heads.sdk.learner)
+        "output": "bfo-cco-2.2",       # the space it writes; equal output = swap with no re-ingestion
+        "resources": {"cpu": 1.0, "memory_mb": 1024, "workers": 1},  # defaults; the user sets CPU per slot
+        "dependencies": ["rapidfuzz>=3"],  # its own Python dependencies, shipped as wheels in its package
     }
 
 It is read with ``ast`` (``read_module_literal``), so listing implementations
@@ -41,6 +44,7 @@ IMPL_NAME_RE = re.compile(r"^[a-z][a-z0-9_]{1,31}$")
 
 # The contract each standard slot accepts (added slots take FACET_CONTRACT).
 SLOT_CONTRACTS: Dict[str, str] = {
+    "nlp": "parser-v1",
     "ontology": "ontology-v1",
     "entity": "entity-v1",
     "attribute": "attribute-v1",
@@ -146,6 +150,39 @@ def impl_meta_problem(meta: Any, slot: str, name: str) -> Optional[str]:
     return None
 
 
+OUTPUT_RE = re.compile(r"^[a-z0-9][a-z0-9._+-]{0,63}$")
+RESOURCE_KEYS = {"cpu": (int, float), "memory_mb": (int,), "workers": (int,)}
+
+
+def plugin_meta_problems(meta: Dict[str, Any], require_output: bool = False) -> List[str]:
+    """What is wrong with the plugin fields of IMPL_META: ``output`` (the identifier of the space the head
+    writes; two plugins with the same output swap without re-ingestion), ``resources`` (default cpu cores,
+    memory_mb and workers) and ``dependencies`` (pip requirement strings, shipped as wheels in the package).
+    ``require_output``: a package must name its output."""
+    out = []
+    o = meta.get("output")
+    if o is None:
+        if require_output:
+            out.append("IMPL_META output is required in a package (the space the head writes)")
+    elif not isinstance(o, str) or not OUTPUT_RE.match(o):
+        out.append(f"IMPL_META output must match {OUTPUT_RE.pattern}")
+    r = meta.get("resources")
+    if r is not None:
+        if not isinstance(r, dict):
+            out.append("IMPL_META resources must be an object")
+        else:
+            for k, v in r.items():
+                types = RESOURCE_KEYS.get(k)
+                if types is None:
+                    out.append(f"IMPL_META resources: unknown key {k!r} (known {sorted(RESOURCE_KEYS)})")
+                elif isinstance(v, bool) or not isinstance(v, types) or v <= 0:
+                    out.append(f"IMPL_META resources {k!r} must be a positive number")
+    d = meta.get("dependencies")
+    if d is not None and (not isinstance(d, (list, tuple)) or not all(isinstance(x, str) and x.strip() for x in d)):
+        out.append("IMPL_META dependencies must be a list of pip requirement strings")
+    return out
+
+
 def missing_assets(assets: Iterable[Dict[str, Any]]) -> Tuple[str, ...]:
     """IMPL_META "assets": [{"name", "env", "default", "files"}]. An asset is
     missing when its directory ($env, else default) lacks any listed file."""
@@ -243,6 +280,7 @@ def read_impl_meta(head: Path) -> Tuple[Optional[Dict[str, Any]], List[str]]:
         except StoreSpecError as e:
             probs.append(f"IMPL_META stores: {e}")
     probs += learner_problems(meta, head)
+    probs += plugin_meta_problems(meta)
     return meta, probs
 
 

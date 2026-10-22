@@ -195,7 +195,6 @@ def test_record_class_from_first_sentence_person(tmp_path, nlp):
     (lambda m: m.update(schema="other/1"), "schema"),
     (lambda m: m.update(feature_spec="x"), "feature spec"),
     (lambda m: m.update(tbox="x"), "TBox"),
-    (lambda m: m.update(parser="x"), "parser"),
     (lambda m: m.update(classes=["person", "x", "y"]), "registry"),
     (lambda m: m.update(temperature=0), "temperature"),
 ])
@@ -207,6 +206,20 @@ def test_artifact_rejected_on_mismatch(tmp_path, mutate, match):
     meta_path.write_text(json.dumps(meta))
     with pytest.raises(CodebookError, match=match):
         Codebook.load(tmp_path)
+
+
+def test_a_parser_change_is_reported_not_refused(tmp_path):
+    """Owner, 2026-10-22: an NLP change rarely moves the cues enough to break the codebook -- alert, do not
+    disable. The codebook loads, carries both fingerprints, and an unchanged parser reports none."""
+    _toy(tmp_path)
+    assert Codebook.load(tmp_path).parser_mismatch is None
+    meta_path = tmp_path / "cco_codebook.json"
+    meta = json.loads(meta_path.read_text())
+    meta["parser"] = "f" * 64
+    meta_path.write_text(json.dumps(meta))
+    book = Codebook.load(tmp_path)
+    assert book.parser_mismatch == {"trained": "f" * 64, "running": parser_fingerprint()}
+    assert Codebook.load(tmp_path, check_parser=False).parser_mismatch is None
 
 
 def test_missing_artifact_is_an_error(tmp_path):
