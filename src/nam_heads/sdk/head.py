@@ -52,6 +52,12 @@ class EncoderHead(ABC):
     ``emittable_classes`` (``nam_heads.sdk.testing`` checks the contract).
     """
 
+    # Set by the host, never by the head: True when this head may park a
+    # record that holds a value it cannot identify (nam_heads.sdk.learner).
+    # The host sets it only when the implementation declares a learner part,
+    # learning is on for the slot, and it can hand the record off durably.
+    parking: bool = False
+
     def __init__(self, head_type: str, config: Optional[Dict] = None,
                  stores: Optional[Dict[str, Any]] = None):
         self.head_type = head_type

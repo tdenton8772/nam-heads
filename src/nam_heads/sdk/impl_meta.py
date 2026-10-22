@@ -12,6 +12,8 @@ Every implementation's ``head.py`` carries a module-level literal
         "requires": ["numpy"],         # top-level packages beyond the host image
         "assets": [{"name", "env", "default", "files"}],   # model files it loads
         "ontology": {"name": "sdg", "artifact": "artifacts/x.json"},  # ontology slot only
+        "stores": [...],               # state it keeps (nam_heads.sdk.store)
+        "learner": {"module": "learner", "gpu": {...}},  # its learner part (nam_heads.sdk.learner)
     }
 
 It is read with ``ast`` (``read_module_literal``), so listing implementations
@@ -240,4 +242,22 @@ def read_impl_meta(head: Path) -> Tuple[Optional[Dict[str, Any]], List[str]]:
             parse_specs(meta["stores"])
         except StoreSpecError as e:
             probs.append(f"IMPL_META stores: {e}")
+    probs += learner_problems(meta, head)
     return meta, probs
+
+
+def learner_problems(meta: Dict[str, Any], head: Path) -> List[str]:
+    """What is wrong with IMPL_META "learner" of ``head`` (a head.py): malformed, not static, or
+    naming a module the package lacks. [] when it is absent or well formed."""
+    from .learner import LearnerSpecError, parse_learner
+    if "learner" not in meta:
+        if "learner" in literal_dict_keys(head, "IMPL_META"):
+            return ["IMPL_META learner is not static (literals and module constants only)"]
+        return []
+    try:
+        spec = parse_learner(meta["learner"])
+    except LearnerSpecError as e:
+        return [str(e)]
+    if spec is not None and not spec.path(head).is_file():
+        return [f"IMPL_META learner module {spec.module}.py is not in the package"]
+    return []

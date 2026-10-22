@@ -161,3 +161,100 @@ def check_ontology_head(head: EncoderHead, texts: Iterable[str] = SAMPLE_TEXTS,
         if c is not None and not known(c):
             out.append(f"classify_nearest({q!r}) -> {c!r}, not in the registry")
     return out
+
+
+def build_learner(impl: InstalledImpl, store=None, config: Optional[Dict[str, Any]] = None):
+    """``impl``'s learner part built as the host builds it, on ``store`` (default: an in-memory store
+    for the slot), or None when the implementation declares none."""
+    from .learner import load_learner_class, parse_learner
+    from .store import MemoryStore, StoreSpec
+
+    meta, _ = read_impl_meta(impl.head)
+    spec = parse_learner((meta or {}).get("learner"))
+    if spec is None:
+        return None
+    cls = load_learner_class(impl.package, spec)
+    return cls(impl.slot, store if store is not None else MemoryStore(StoreSpec(name="learner_test")),
+               config)
+
+
+def check_learner(learner, cases: Iterable[Dict[str, Any]]) -> List[str]:
+    """Problems with ``learner`` (a HeadLearner) as a learner part; [] = conforms.
+
+    ``cases``: what the live part would park, ``{"value", "occurrence", "record"}``, with ``record``
+    the host's ``{"key", "title", "text"}``. Checks, on the learner's own store:
+
+    - ``pending`` splits the values into (to decide, decided) and starts with nothing decided;
+    - ``build_item`` returns None or a dict carrying the item id it was given;
+    - ``decision`` answers a missing or malformed answer with a decision (a dict with a "kind"),
+      never an exception; ``leave_out`` has kind "leave_out";
+    - ``store_writes`` gives (str key, bytes) pairs; once written, ``pending`` reports every value
+      decided, with the decision written -- so a decided value never parks again;
+    - with no gpu, ``decide_local`` answers each item.
+    """
+    from .learner import LEAVE_OUT, HeadLearner
+
+    out: List[str] = []
+    if not isinstance(learner, HeadLearner):
+        return [f"{type(learner).__name__} is not a HeadLearner"]
+    cases = list(cases)
+    values = [c["value"] for c in cases]
+    todo, decided = learner.pending(values)
+    if sorted(todo) != sorted(values) or decided:
+        out.append(f"pending on an empty store: todo={todo} decided={sorted(decided)}")
+    items: Dict[str, Dict[str, Any]] = {}
+    for i, c in enumerate(cases):
+        item_id = f"t|{i}"
+        it = learner.build_item(item_id, c["value"], c.get("occurrence") or {}, c.get("record") or {}, {})
+        if it is None:
+            continue
+        if not isinstance(it, dict) or it.get("item") != item_id:
+            out.append(f"build_item({c['value']!r}) must carry 'item': {item_id!r}, got {it!r}")
+            continue
+        items[c["value"]] = it
+    if not items:
+        out.append("build_item returned None for every case")
+    gpu = learner.gpu_workload()
+    answers: Dict[str, Any] = {}
+    if gpu is None:
+        try:
+            got = learner.decide_local(list(items.values()))
+            if len(got) != len(items):
+                out.append(f"decide_local returned {len(got)} answers for {len(items)} items")
+            answers = dict(zip(items, got))
+        except NotImplementedError as e:
+            out.append(f"no gpu and no decide_local: {e}")
+    elif not gpu.get("image") or not gpu.get("model_id"):
+        out.append(f"gpu_workload lacks image or model_id: {gpu}")
+    decisions: Dict[str, dict] = {}
+    for v, it in items.items():
+        for bad in (None, {}, "garbage", {"answer": None}):
+            try:
+                d = learner.decision(v, it, bad, decisions)
+            except Exception as e:  # noqa: BLE001
+                out.append(f"decision({v!r}, answer={bad!r}) raised {type(e).__name__}: {e}")
+                continue
+            if not isinstance(d, dict) or not d.get("kind"):
+                out.append(f"decision({v!r}, answer={bad!r}) -> {d!r}: not a decision")
+        try:
+            decisions[v] = learner.decision(v, it, answers.get(v), decisions)
+        except Exception:  # noqa: BLE001  (reported above)
+            decisions[v] = learner.leave_out(v, "decision raised")
+    for v in values:
+        if v not in decisions:
+            decisions[v] = learner.leave_out(v, "no item")
+    lo = learner.leave_out(values[0] if values else "x", "test")
+    if not isinstance(lo, dict) or lo.get("kind") != LEAVE_OUT:
+        out.append(f"leave_out -> {lo!r}: kind must be {LEAVE_OUT!r}")
+    writes = learner.store_writes(decisions)
+    if not all(isinstance(k, str) and isinstance(b, (bytes, bytearray)) for k, b in writes):
+        out.append("store_writes must give (str, bytes) pairs")
+        return out
+    learner.store.put_many(writes)
+    todo, decided = learner.pending(values)
+    if todo:
+        out.append(f"written decisions are not read back: still pending {todo}")
+    for v, d in decided.items():
+        if d.get("kind") != decisions[v].get("kind"):
+            out.append(f"{v!r}: wrote kind {decisions[v].get('kind')!r}, read back {d.get('kind')!r}")
+    return out

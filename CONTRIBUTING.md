@@ -103,6 +103,56 @@ So, today:
 - a state store declared in `IMPL_META` and given to the head by the host is
   planned. It will be an addition, so implementations written now keep working.
 
+## Learning: what a head does with a value it cannot identify
+
+Optional. A head that meets a value it cannot identify (a verb its table does
+not know, a place it has never seen) can hand the record to a learner instead
+of guessing. Such a head has two parts:
+
+- **live**, the head itself. When ``self.parking`` is True and a record holds a
+  value it cannot identify, `encode` returns
+  `parked_result(self.head_type, [{"value": ..., <what the learner needs to find it>}])`
+  (`nam_heads.sdk.learner`) in place of addresses. The host takes the record out
+  of the pipeline and queues it. **The host sets `parking`, never the head**: only
+  when your implementation declares a learner part, learning is on for the slot,
+  and the host can hand the record off durably. With `parking` False, leave the
+  value out as you would without learning. A parked entry is small and
+  JSON-serialisable: never the record body, which the host keeps.
+- **learner**, one `HeadLearner` subclass in `learner.py` next to `head.py`,
+  declared in `IMPL_META`:
+
+  ```python
+  IMPL_META = {..., "learner": {
+      "module": "learner",                      # learner.py (the default)
+      "version": "0.1.0",
+      "gpu": {"image": "you/your-learner:0.1.0",  # omit "gpu" to decide on CPU
+              "model_id": "your-learner-v1", "port": 50051, "disk_gb": 40,
+              "gpu_types": ["NVIDIA GeForce RTX 4090"]}}}
+  ```
+
+  ```python
+  from nam_heads.sdk.learner import HeadLearner
+
+  class MyLearner(HeadLearner):
+      def decision_key(self, value): ...          # the store key the live part reads
+      def build_item(self, item_id, value, occurrence, record, decided): ...   # or None
+      def decision(self, value, item, answer, decided): ...   # {"kind": ...}; never raises
+      def decide_local(self, items): ...          # only without "gpu"
+  ```
+
+The host batches a slot's parked values and, per batch: asks `pending` which
+values still need deciding (an earlier decision is reused), builds an item from
+one of each value's records (`record` is `{"key", "title", "text"}`), sends the
+items to your model (the GPU server answers `GET /health` with `{"ok": true}` once
+loaded and `POST /decide {"items": [...]}` with `{"answers": [...]}`, one per item
+in order; or `decide_local`), turns each answer into a decision, writes
+`store_writes(decisions)` to the head's store, and only then sends the records
+through again. The rule both parts keep: **a value with a decision never parks
+again**, `leave_out` included, or a record would loop.
+
+`nam_heads.sdk.testing.check_learner(learner, cases)` checks a learner part on its
+own store; `build_learner(impl)` builds one as the host does.
+
 ## 5. Tests
 
 - Put unit tests in `impls/<slot>/<name>/tests/`. Test the logic you wrote, not

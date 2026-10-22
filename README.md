@@ -25,7 +25,9 @@ src/nam_heads/
   sdk/                     the contract
     head.py                EncoderHead, EncodingResult, SemanticAddress
     impl_meta.py           IMPL_META: read, checked, discovered (entry points)
-    host.py                what a head borrows from the host: parser, axis encoder, CPU budget
+    host.py                what a head borrows from the host: parser, axis encoder, CPU budget, stores
+    store.py, merge.py     head stores: state a head keeps between records, and their merges
+    learner.py             head learning: parking a record, and the learner part that decides its values
     sentence_ontology.py   how the host derives per-sentence classes
     testing.py             conformance checks for any implementation
   ontology/                the class registry: BFO 2020 + CCO v2.2 (classes.json),
