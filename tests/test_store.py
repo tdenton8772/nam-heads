@@ -90,8 +90,8 @@ def test_merges_match_nam_byte_for_byte():
     from nam_heads.sdk import host as H
     if not H.has_parser():   # set by conftest.py when NAM_SRC points at a NAM checkout
         pytest.skip("needs NAM_SRC")
-    from src.encoders.heads.affordance.storage import merge as AFF
-    from src.encoders.heads.context.storage import merge as CTX
+    from src.storage.merges import counters as AFF
+    from src.storage.merges import votes as CTX
 
     rng = random.Random(3)
     for _ in range(2000):

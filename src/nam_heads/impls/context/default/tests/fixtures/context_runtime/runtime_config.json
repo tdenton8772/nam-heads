@@ -1,0 +1,32 @@
+{
+  "HASH": "fixture-context-hash-001",
+  "CREATED_AT": "2026-01-16T00:00:00Z",
+  "AXES": [
+    {
+      "name": "environment",
+      "null": "__null__",
+      "values": [
+        { "label": "environment", "lemma": "outdoor" },
+        { "label": "environment", "lemma": "indoor" }
+      ]
+    },
+    {
+      "name": "location_type",
+      "null": "__null__",
+      "values": [
+        { "label": "scope", "lemma": "recreational" },
+        { "label": "scope", "lemma": "industrial" },
+        { "label": "scope", "lemma": "residential" }
+      ]
+    },
+    {
+      "name": "operational_state",
+      "null": "__null__",
+      "values": [
+        { "label": "conditional", "lemma": "normal" },
+        { "label": "conditional", "lemma": "degraded" },
+        { "label": "conditional", "lemma": "emergency" }
+      ]
+    }
+  ]
+}

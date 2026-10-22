@@ -1,0 +1,21 @@
+{
+ "encoder": "charcnn",
+ "axis": "context",
+ "input": "ctx_chars",
+ "max_len": 40,
+ "coarse_codes": 1024,
+ "null_code": "lca:0:0",
+ "artifact_id": "charcnn-context-f3503ee332bd74f0",
+ "sha256": {
+  "model.onnx": "6a884290c8d1bcc4d87955be3c066dd07dc44dfbd93e57ee5c1ca22f589b48e8",
+  "neighbours.npy": "2407e3b9af7a2de78402b9bf4b57408939b63353c275287848ed09a682a692d3"
+ },
+ "source": {
+  "onnx": "nam/src/addressing/lca/checkpoint/lca_v5.onnx(+.data)",
+  "sha256": "8a00c8308406fc1a285832b2fca01f0d3dfb77fe1058e4756146f99ecfeeab1b",
+  "outputs": [
+   "/Unsqueeze_9_output_0",
+   "/Unsqueeze_11_output_0"
+  ]
+ }
+}

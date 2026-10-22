@@ -1,0 +1,283 @@
+New York
+Los Angeles
+Chicago
+Houston
+Phoenix
+Philadelphia
+San Antonio
+San Diego
+Dallas
+San Jose
+Austin
+Jacksonville
+Fort Worth
+Columbus
+Charlotte
+Indianapolis
+San Francisco
+Seattle
+Denver
+Washington
+Nashville
+Oklahoma City
+El Paso
+Boston
+Portland
+Las Vegas
+Memphis
+Louisville
+Baltimore
+Milwaukee
+Albuquerque
+Tucson
+Fresno
+Mesa
+Sacramento
+Atlanta
+Kansas City
+Omaha
+Colorado Springs
+Raleigh
+Virginia Beach
+Long Beach
+Miami
+Oakland
+Minneapolis
+Tulsa
+Tampa
+Arlington
+New Orleans
+Cleveland
+Honolulu
+Anaheim
+Lexington
+Stockton
+Corpus Christi
+Henderson
+Riverside
+Newark
+Saint Paul
+Santa Ana
+Cincinnati
+Irvine
+Orlando
+Pittsburgh
+St. Louis
+Greensboro
+Jersey City
+Anchorage
+Lincoln
+Plano
+Durham
+Buffalo
+Chandler
+Chula Vista
+Toledo
+Madison
+Gilbert
+Reno
+Detroit
+Salt Lake City
+London
+Paris
+Berlin
+Madrid
+Rome
+Vienna
+Amsterdam
+Brussels
+Lisbon
+Dublin
+Prague
+Budapest
+Warsaw
+Bucharest
+Athens
+Stockholm
+Oslo
+Helsinki
+Copenhagen
+Zurich
+Geneva
+Edinburgh
+Glasgow
+Manchester
+Birmingham
+Liverpool
+Leeds
+Bristol
+Munich
+Hamburg
+Frankfurt
+Cologne
+Milan
+Naples
+Turin
+Barcelona
+Seville
+Valencia
+Marseille
+Lyon
+Toulouse
+Nice
+Moscow
+Saint Petersburg
+Kyiv
+Minsk
+Istanbul
+Ankara
+Tehran
+Baghdad
+Riyadh
+Jeddah
+Dubai
+Abu Dhabi
+Doha
+Kuwait City
+Muscat
+Amman
+Beirut
+Damascus
+Jerusalem
+Tel Aviv
+Cairo
+Alexandria
+Casablanca
+Algiers
+Tunis
+Tripoli
+Lagos
+Abuja
+Nairobi
+Addis Ababa
+Kinshasa
+Johannesburg
+Cape Town
+Durban
+Pretoria
+Accra
+Dakar
+Dar es Salaam
+Kampala
+Harare
+Lusaka
+Maputo
+Luanda
+Khartoum
+Tokyo
+Osaka
+Yokohama
+Nagoya
+Sapporo
+Kobe
+Kyoto
+Fukuoka
+Beijing
+Shanghai
+Guangzhou
+Shenzhen
+Chengdu
+Wuhan
+Hangzhou
+Nanjing
+Tianjin
+Chongqing
+Xi'an
+Hong Kong
+Taipei
+Seoul
+Busan
+Pyongyang
+Ulaanbaatar
+Delhi
+Mumbai
+Bangalore
+Hyderabad
+Chennai
+Kolkata
+Ahmedabad
+Pune
+Jaipur
+Lucknow
+Karachi
+Lahore
+Islamabad
+Dhaka
+Chittagong
+Colombo
+Kathmandu
+Yangon
+Bangkok
+Ho Chi Minh City
+Hanoi
+Jakarta
+Surabaya
+Manila
+Quezon City
+Kuala Lumpur
+Singapore
+Phnom Penh
+Vientiane
+Sydney
+Melbourne
+Brisbane
+Perth
+Adelaide
+Auckland
+Wellington
+Christchurch
+Toronto
+Montreal
+Vancouver
+Calgary
+Edmonton
+Ottawa
+Winnipeg
+Quebec City
+Mexico City
+Guadalajara
+Monterrey
+Puebla
+Tijuana
+Havana
+Santo Domingo
+San Juan
+Guatemala City
+San Salvador
+Tegucigalpa
+Managua
+Panama City
+Bogota
+Medellin
+Cali
+Quito
+Guayaquil
+Lima
+Arequipa
+La Paz
+Santiago
+Valparaiso
+Buenos Aires
+Cordoba
+Rosario
+Montevideo
+Asuncion
+Brasilia
+Sao Paulo
+Rio de Janeiro
+Salvador
+Fortaleza
+Belo Horizonte
+Recife
+Porto Alegre
+Curitiba
+Manaus
+Caracas
+Georgetown
+Paramaribo
+Tashkent
+Almaty
+Baku
+Tbilisi
+Yerevan
+Kabul

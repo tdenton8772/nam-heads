@@ -4,12 +4,14 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "nam-heads"
-version = "0.3.0"
+version = "0.4.0"
 description = "Pluggable head implementations for NAM, and the SDK they are written against"
 readme = "README.md"
 license = {text = "Apache-2.0"}
 requires-python = ">=3.10"
 dependencies = ["numpy>=1.24"]
+# The default heads also use onnxruntime (axis encoders) and lmdb (the host's node cache) when they run
+# inside NAM; NAM installs both.
 
 [project.optional-dependencies]
 # ColBERT-style MaxSim heads (gaius, gaius_ref) at run time
@@ -28,12 +30,17 @@ nam-heads = "nam_heads.sdk.package:main"
 "ontology.abstain" = "nam_heads.impls.ontology.abstain"
 "ontology.gaius" = "nam_heads.impls.ontology.gaius"
 "ontology.gaius_ref" = "nam_heads.impls.ontology.gaius_ref"
+"nlp.rule" = "nam_heads.impls.nlp.rule"
+"entity.default" = "nam_heads.impls.entity.default"
+"attribute.default" = "nam_heads.impls.attribute.default"
+"affordance.default" = "nam_heads.impls.affordance.default"
+"context.default" = "nam_heads.impls.context.default"
 
 [tool.setuptools.packages.find]
 where = ["src"]
 
 [tool.setuptools.package-data]
-"*" = ["*.json", "*.npz", "*.md"]
+"*" = ["*.json", "*.npz", "*.npy", "*.md", "*.txt", "*.onnx", "*.gz"]
 
 [tool.pytest.ini_options]
 testpaths = ["src/nam_heads", "tests"]

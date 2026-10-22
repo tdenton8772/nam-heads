@@ -1,0 +1,97 @@
+# Seed of the attribute store's kind flag (kind=False, kind_source=seed).
+#
+# Nouns that, in "this/the <noun>", "the <noun> of X" and "<nouns> such as
+# X", name discourse content, an abstraction or a relation -- not a kind the
+# referent is an instance of: "This story illustrates ...", "the heart of
+# the city", "the capital of France", "influences such as X". Extraction
+# does not resolve such an anaphor to the main subject and does not read
+# such a frame as "X is a <noun>".
+#
+# A FILTER, never a value map. The store overrides a seed row with
+# kind=True once the corpus predicates the noun of named subjects in
+# learning.KIND_SUPPORT distinct records ("Burns supper is an event").
+# Words of GENERIC_HEADS (predication.py) are already excluded everywhere.
+absence
+adjustment
+aim
+answer
+approach
+attack
+banks
+beginning
+birthplace
+border
+capital
+center
+centre
+change
+collaboration
+combination
+concept
+conflict
+contribution
+core
+crew
+date
+day
+decision
+decline
+defeat
+development
+domain
+edge
+effort
+end
+era
+essence
+event
+expression
+fall
+fear
+focus
+foundation
+geography
+goal
+growth
+heart
+history
+idea
+impact
+importance
+increase
+influence
+innovation
+involvement
+judiciary
+legacy
+loss
+memory
+mouth
+move
+nature
+outskirts
+period
+phrase
+presence
+preservation
+process
+purpose
+question
+research
+rise
+role
+seat
+shift
+shore
+site
+source
+spirit
+start
+story
+strength
+study
+surge
+vicinity
+victory
+war
+work

@@ -1,0 +1,240 @@
+Google
+Apple
+Microsoft
+Amazon
+Facebook
+Meta
+Tesla
+Netflix
+Twitter
+Uber
+Lyft
+Airbnb
+SpaceX
+PayPal
+Intel
+IBM
+Oracle
+Cisco
+Dell
+HP
+AMD
+Nvidia
+Samsung
+Sony
+Nintendo
+Toyota
+Honda
+Ford
+General Motors
+Volkswagen
+BMW
+Mercedes-Benz
+Boeing
+Airbus
+Lockheed Martin
+Raytheon
+General Electric
+Siemens
+Johnson and Johnson
+Pfizer
+Moderna
+AstraZeneca
+Merck
+Novartis
+Roche
+Bayer
+BASF
+Shell
+ExxonMobil
+Chevron
+BP
+TotalEnergies
+Coca-Cola
+PepsiCo
+Nestle
+Unilever
+Procter and Gamble
+McDonald's
+Starbucks
+Walmart
+Target
+Costco
+Home Depot
+JPMorgan Chase
+Goldman Sachs
+Morgan Stanley
+Bank of America
+Citigroup
+Wells Fargo
+HSBC
+Barclays
+Deutsche Bank
+Credit Suisse
+UBS
+BlackRock
+Vanguard
+Fidelity
+State Street
+Berkshire Hathaway
+Alibaba
+Tencent
+Baidu
+Huawei
+Xiaomi
+ByteDance
+TikTok
+Reliance Industries
+Tata Group
+Infosys
+Wipro
+NASA
+FBI
+CIA
+NSA
+Pentagon
+Department of Defense
+State Department
+Treasury Department
+Department of Justice
+Secret Service
+DEA
+ATF
+IRS
+FEMA
+EPA
+FDA
+CDC
+NIH
+DHS
+WHO
+United Nations
+European Union
+NATO
+World Bank
+IMF
+WTO
+UNICEF
+UNESCO
+IAEA
+Interpol
+OPEC
+African Union
+ASEAN
+Red Cross
+Amnesty International
+Greenpeace
+Doctors Without Borders
+Oxfam
+CARE
+Save the Children
+World Wildlife Fund
+WWF
+Human Rights Watch
+Peace Corps
+USAID
+NFL
+NBA
+MLB
+NHL
+MLS
+FIFA
+UEFA
+IOC
+Olympics
+PGA
+ATP
+WTA
+Formula One
+NASCAR
+UFC
+ESPN
+Premier League
+La Liga
+Bundesliga
+Serie A
+Ligue 1
+Champions League
+Harvard
+MIT
+Stanford
+Oxford
+Cambridge
+Yale
+Princeton
+Columbia
+Cornell
+Penn
+Brown
+Dartmouth
+Duke
+Northwestern
+Georgetown
+UC Berkeley
+UCLA
+Caltech
+Johns Hopkins
+University of Chicago
+Carnegie Mellon
+NYU
+Georgia Tech
+University of Michigan
+University of Virginia
+Imperial College
+ETH Zurich
+University of Toronto
+McGill
+Sorbonne
+Peking University
+Tsinghua University
+University of Tokyo
+National University of Singapore
+University of Melbourne
+University of Sydney
+Reuters
+Associated Press
+Bloomberg
+BBC
+CNN
+Fox News
+MSNBC
+NPR
+PBS
+Al Jazeera
+New York Times
+Washington Post
+Wall Street Journal
+Guardian
+Financial Times
+Economist
+Forbes
+Time
+Newsweek
+Nature
+Science
+Lancet
+ACLU
+NRA
+NAACP
+Sierra Club
+Heritage Foundation
+Brookings Institution
+RAND Corporation
+Council on Foreign Relations
+Carnegie Endowment
+Aspen Institute
+TED
+IEEE
+ACM
+AMA
+ABA
+AARP
+Rotary International
+Lions Club
+YMCA
+Salvation Army
+Habitat for Humanity
+Planned Parenthood
+Boy Scouts
+Girl Scouts
+National Geographic

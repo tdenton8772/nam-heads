@@ -1,0 +1,7 @@
+{
+ "source": "enwiki-20260901-all-titles-in-ns0.gz",
+ "source_sha256": "01094d764f053d32dace439e586f68d73ceb020e76832c0a1611415dcfb30735",
+ "titles_read": 19264252,
+ "concepts": 2254386,
+ "rule": "2-4 alphabetic words, sentence case, parenthetical dropped; key = entity.concepts.concept_key_words; 64-bit blake2b"
+}

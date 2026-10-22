@@ -204,6 +204,18 @@ def unpack(archive, dest) -> Path:
     return dest
 
 
+def implementations(root: Optional[Path] = None) -> List[Path]:
+    """Every implementation directory under ``root`` (default: this package's ``impls``):
+    ``<slot>/<name>/head.py``, in order."""
+    root = Path(root) if root is not None else Path(__file__).resolve().parent.parent / "impls"
+    return sorted(h.parent for h in root.glob("*/*/head.py") if not h.parent.name.startswith("_"))
+
+
+def pack_all(out_dir, root: Optional[Path] = None) -> List[Path]:
+    """Pack every implementation under ``root`` into ``out_dir``; returns the archives."""
+    return [pack(d, out_dir) for d in implementations(root)]
+
+
 def main(argv: Optional[Sequence[str]] = None) -> int:
     ap = argparse.ArgumentParser(prog="nam-heads", description="Build and check NAM head plugin packages.")
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -212,6 +224,8 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     p.add_argument("-o", "--out-dir", default=".")
     p.add_argument("--wheel", action="append", default=[])
     p.add_argument("--wheel-dir")
+    pa = sub.add_parser("pack-all", help="build a package of every implementation in this repo (impls/)")
+    pa.add_argument("-o", "--out-dir", default=".")
     for name in ("verify", "info"):
         q = sub.add_parser(name)
         q.add_argument("archive")
@@ -220,6 +234,10 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         if a.cmd == "pack":
             out = pack(a.src, a.out_dir, a.wheel, a.wheel_dir)
             print(f"{out}  sha256={sha256_file(out)}")
+        elif a.cmd == "pack-all":
+            for out in pack_all(a.out_dir):
+                m = read_manifest(out)
+                print(f"{m['id']:32s} {out.stat().st_size / 1e6:7.1f} MB  sha256={sha256_file(out)[:16]}  {out}")
         elif a.cmd == "verify":
             m = verify(a.archive)
             print(f"ok {m['id']}  files={len(m['files'])}  sha256={sha256_file(Path(a.archive))}")

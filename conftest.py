@@ -14,3 +14,19 @@ if _nam:
     from src.encoders import nam_host
 
     nam_host.register()
+
+
+# The default heads (nlp.rule, entity, attribute, affordance, context) are written against NAM's host modules
+# (src.storage, src.nlp, src.encoders.record_parse, ...): without NAM_SRC their packages cannot be imported,
+# so their tests are not collected.
+try:
+    import src.nlp.interfaces  # noqa: F401
+    _HAVE_NAM = True
+except ImportError:
+    _HAVE_NAM = False
+
+collect_ignore = [] if _HAVE_NAM else [
+    "src/nam_heads/impls/nlp", "src/nam_heads/impls/entity", "src/nam_heads/impls/attribute",
+    "src/nam_heads/impls/affordance", "src/nam_heads/impls/context", "src/nam_heads/impls/_testing",
+    "tests/test_default_head_metrics.py", "tests/test_default_store_factories.py",
+]

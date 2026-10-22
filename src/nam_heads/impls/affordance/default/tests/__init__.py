@@ -1,0 +1,3 @@
+"""
+Affordance encoder head tests.
+"""
