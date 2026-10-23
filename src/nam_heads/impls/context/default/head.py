@@ -60,13 +60,21 @@ from src.encoders.record_parse import with_parse
 IMPL_META = {
     "slot": "context",
     "name": "default",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "contract": "context-v1",
     "description": "Context axis: the circumstances a record applies under (time, place, "
                    "institution, field) from its particular evidence, or the legacy NER extraction.",
     "output": "context-values-v1",
     "resources": {"cpu": 1.0, "memory_mb": 1024, "workers": 1},
     "dependencies": [],
+    # What host stages read from it besides the head (nam_heads.sdk.exports).
+    "provides": {
+        "entity_profile": "context_axis.profiles:entity_profile",
+        "admit_context": "context_axis.profiles:admit",
+        "select_contexts": "context_axis.profiles:select",
+        "seed": "exports:seed",
+        "axis_encoder": "exports:axis_encoder",
+    },
 }
 
 logger = logging.getLogger(__name__)
@@ -78,10 +86,9 @@ class ContextEncoder(EncoderHead):
     HEAD_TYPE = "context"
 
     def create_axis_encoder(self):
-        """This head's own encoder, from its own package (``encoder/charcnn``)."""
-        from pathlib import Path as _Path
-        from src.encoders.axis_encoder import package_axis_encoder
-        return package_axis_encoder(self.head_type, _Path(__file__).resolve().parent / "encoder" / "charcnn")
+        """This head's own encoder (exports.axis_encoder, the one host stages read too)."""
+        from .exports import axis_encoder
+        return axis_encoder()
 
     def _initialize(self):
         cfg = {**DEFAULT_CONFIG, **(self.config or {})}

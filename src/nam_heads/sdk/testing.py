@@ -66,6 +66,25 @@ def load_class(impl: InstalledImpl):
     return classes[0]
 
 
+def check_provides(impl: InstalledImpl) -> List[str]:
+    """Every export ``impl`` declares (IMPL_META "provides") imports and is of its kind; [] when all are."""
+    from .exports import kind_problem, load_export, parse_provides
+    meta, problems = read_impl_meta(impl.head)
+    if meta is None or problems:
+        return problems or ["no IMPL_META"]
+    out = []
+    for name, ref in parse_provides(meta.get("provides"), meta["contract"]).items():
+        try:
+            value = load_export(impl.package, ref)
+        except (ImportError, AttributeError) as e:
+            out.append(f"export {name!r} ({ref.ref}): {type(e).__name__}: {e}")
+            continue
+        problem = kind_problem(meta["contract"], name, value)
+        if problem:
+            out.append(problem)
+    return out
+
+
 def apply_ontology(impl: InstalledImpl) -> Optional[str]:
     """What the host does when the manifest selects ``impl``: make the class
     registry carry the implementation's own classes (IMPL_META "ontology"),

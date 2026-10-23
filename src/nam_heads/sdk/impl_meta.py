@@ -17,6 +17,7 @@ Every implementation's ``head.py`` carries a module-level literal
         "output": "bfo-cco-2.2",       # the space it writes; equal output = swap with no re-ingestion
         "resources": {"cpu": 1.0, "memory_mb": 1024, "workers": 1},  # defaults; the user sets CPU per slot
         "dependencies": ["rapidfuzz>=3"],  # its own Python dependencies, shipped as wheels in its package
+        "provides": {"seed": "exports:seed"},  # what host stages may read from it (nam_heads.sdk.exports)
     }
 
 It is read with ``ast`` (``read_module_literal``), so listing implementations
@@ -281,6 +282,8 @@ def read_impl_meta(head: Path) -> Tuple[Optional[Dict[str, Any]], List[str]]:
             probs.append(f"IMPL_META stores: {e}")
     probs += learner_problems(meta, head)
     probs += plugin_meta_problems(meta)
+    from .exports import provides_problems
+    probs += provides_problems(meta, head)
     return meta, probs
 
 

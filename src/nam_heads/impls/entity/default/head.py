@@ -27,13 +27,19 @@ from src.nlp import get_nlp_service
 IMPL_META = {
     "slot": "entity",
     "name": "default",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "contract": "entity-v1",
     "description": "Entity resolution: the record's name mentions as deterministic entity ids "
                    "(a hash of the normalized mention), with store-backed aliases.",
     "output": "entity-ids-v1",
     "resources": {"cpu": 1.0, "memory_mb": 1024, "workers": 2},
     "dependencies": [],
+    # What host stages read from it besides the head (nam_heads.sdk.exports).
+    "provides": {
+        "normalize_mention": "normalization:normalize_mention",
+        "comparator": "comparators:get_comparator",
+        "open_store": "storage.couchbase_kv_store:CouchbaseKVEntityStore",
+    },
 }
 
 logger = logging.getLogger(__name__)

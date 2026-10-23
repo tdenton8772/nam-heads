@@ -87,6 +87,8 @@ def meta_problems(meta: Any, head: Path) -> List[str]:
         probs.append(f"contract {meta['contract']!r} != slot {meta['slot']!r} contract {want!r}")
     probs += plugin_meta_problems(meta, require_output=True)
     probs += learner_problems(meta, head)
+    from .exports import provides_problems
+    probs += provides_problems(meta, head)
     return probs
 
 

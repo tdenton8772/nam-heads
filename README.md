@@ -29,6 +29,7 @@ src/nam_heads/
   sdk/                     the contract
     head.py                EncoderHead, EncodingResult, SemanticAddress
     impl_meta.py           IMPL_META: read, checked, discovered (entry points)
+    exports.py             what host stages may read from an implementation besides the head (IMPL_META provides)
     host.py                what a head borrows from the host: parser, axis encoder, CPU budget, stores
     store.py, merge.py     head stores: state a head keeps between records, and their merges
     learner.py             head learning: parking a record, and the learner part that decides its values
@@ -72,7 +73,7 @@ file, its `IMPL_META` as data, and its own dependencies as wheels.
 ```bash
 nam-heads pack src/nam_heads/impls/affordance/default -o build/    # one implementation
 nam-heads pack-all -o build/                                        # every implementation here
-nam-heads verify build/affordance.default-1.0.1.nhp
+nam-heads verify build/affordance.default-1.0.2.nhp
 ```
 
 A head's version is the one its `IMPL_META` declares; NAM's head-slot manifest
@@ -80,6 +81,30 @@ names the exact version each slot runs. A package is installed into a running
 cluster with `POST /v1/admin/plugins` (the raw archive), and runs once a slot
 selects it. A new version that writes the same `output` swaps in without
 re-ingesting; a different `output` needs re-ingestion.
+
+## Exports
+
+Some of NAM's own stages use data that belongs to a head: the bundler folds
+verbs with the affordance head's synonyms and admits attributes by the attribute
+head's rules, query normalizes entity names the way the entity head does, and the
+supervisor writes each head's seed into its store. NAM never imports a head's
+modules by name for this. Each contract lists the exports a host may read
+(`nam_heads.sdk.exports.CONTRACT_EXPORTS`, with what the host does without
+each one), and an implementation declares the ones it provides, and where:
+
+```python
+IMPL_META = {..., "provides": {
+    "verb_synonyms": "definitions:VERB_SYNONYMS",   # <module in the package>:<attribute>
+    "seed": "exports:seed",
+}}
+```
+
+The declaration is checked when the head is packed (a name the contract does not
+list, a missing module or attribute fails the pack) and travels with the package
+into NAM's plugin registry, which lists every installed plugin's exports. NAM
+reads an export by name from the implementation the head-slot manifest selects;
+every export is optional. `testing.check_provides(impl)` imports each declared
+export and checks its kind.
 
 ## How NAM uses this package
 

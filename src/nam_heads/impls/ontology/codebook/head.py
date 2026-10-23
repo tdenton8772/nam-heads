@@ -53,11 +53,13 @@ logger = logging.getLogger(__name__)
 IMPL_META = {
     "slot": "ontology",
     "name": "codebook",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "contract": "ontology-v1",
     "output": "bfo-cco-2.2",
     "resources": {"cpu": 2.0, "memory_mb": 2048, "workers": 1},
     "dependencies": [],
+    # What host stages read from it besides the head (nam_heads.sdk.exports).
+    "provides": {"merge_diagnostics": "diagnostics:merge_snapshots"},
     "description": ("BFO 2020 / CCO v2.2 class from a trained codebook over the host parse's "
                     "sentence cues; backs off to an ancestor, abstains to bfo:entity."),
     "requires": ["numpy"],

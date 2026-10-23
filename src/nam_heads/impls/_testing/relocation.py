@@ -89,7 +89,7 @@ def assert_located_inside(package: str, dest: Path, slot: str) -> None:
                 raise AssertionError(f"{name}.{attr} points into the source tree: {val}")
 
 
-def check_impl_meta(slot: str, output: str, version: str = "1.0.1") -> Dict[str, Any]:
+def check_impl_meta(slot: str, output: str, version: str = "1.0.2") -> Dict[str, Any]:
     """IMPL_META of ``impls/<slot>/default/head.py``, read statically, with every field the plugin
     contract asks of a default head. Returns it for slot-specific checks."""
     head = head_dir(slot) / "head.py"

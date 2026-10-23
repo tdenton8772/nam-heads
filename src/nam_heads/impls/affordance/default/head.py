@@ -51,7 +51,7 @@ from nam_heads.sdk.learner import parked_result
 IMPL_META = {
     "slot": "affordance",
     "name": "default",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "contract": "affordance-v1",
     "description": "Affordance axis: the predicates the text links its entities to, as canonical "
                    "verb values (synonym fold, or the verb sense table), with a learner part for "
@@ -59,6 +59,18 @@ IMPL_META = {
     "output": "affordance-senses-v1",
     "resources": {"cpu": 1.0, "memory_mb": 1024, "workers": 1},
     "dependencies": [],
+    # What host stages read from it besides the head (nam_heads.sdk.exports).
+    "provides": {
+        "verb_synonyms": "definitions:VERB_SYNONYMS",
+        "verb_categories": "definitions:VERB_CATEGORIES",
+        "verb_bases": "predicates:verb_bases",
+        "resolve_base": "predicates:resolve_base",
+        "phrasal_verbs": "predicates:PHRASAL",
+        "link_profile": "exports:link_profile",
+        "senses_enabled": "senses:enabled",
+        "seed": "exports:seed",
+        "axis_encoder": "exports:axis_encoder",
+    },
     "learner": {
         "module": "learner",
         "version": "r5",
@@ -104,21 +116,13 @@ def _sentence_index(bounds: List[Tuple[int, int]]):
     return find
 
 
-def _senses_on() -> bool:
-    return os.getenv("NAM_AFFORDANCE_SENSES", "0") == "1"
-
-
 class AffordanceEncoder(EncoderHead):
     HEAD_TYPE = "affordance"
 
     def create_axis_encoder(self):
-        """This head's own encoder, from its own package (``encoder/charcnn``); with verb senses on, its sense table."""
-        from pathlib import Path as _Path
-        from src.encoders.axis_encoder import package_axis_encoder
-        if _senses_on():
-            from .senses import SenseTableAxisEncoder, table
-            return SenseTableAxisEncoder(table())
-        return package_axis_encoder(self.head_type, _Path(__file__).resolve().parent / "encoder" / "charcnn")
+        """This head's own encoder (exports.axis_encoder, the one host stages read too)."""
+        from .exports import axis_encoder
+        return axis_encoder()
 
     def _initialize(self):
         cfg = {**DEFAULT_CONFIG, **self.config}

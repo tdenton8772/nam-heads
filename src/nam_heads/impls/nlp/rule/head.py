@@ -7,7 +7,7 @@ from nam_heads.sdk.parser import Parser
 IMPL_META = {
     "slot": "nlp",
     "name": "rule",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "contract": "parser-v1",
     "description": "NAM's rule-based parser: tokenizer, POS tagger, lemmatizer, NER and dependency parser",
     # The parse every head reads; a different parser writes a different parse.
@@ -15,6 +15,12 @@ IMPL_META = {
     # ingest.nlpResources.limits (cpu "1", memory 1Gi) and ingest.nlpWorkers 2 on the reference deployment.
     "resources": {"cpu": 1.0, "memory_mb": 1024, "workers": 2},
     "dependencies": [],
+    # What host stages read from it besides the parser (nam_heads.sdk.exports).
+    "provides": {
+        "pos_dictionary": "exports:pos_dictionary",
+        "countries": "exports:countries",
+        "cities": "exports:cities",
+    },
 }
 
 

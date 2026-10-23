@@ -50,13 +50,21 @@ from src.encoders.record_parse import with_parse
 IMPL_META = {
     "slot": "attribute",
     "name": "default",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "contract": "attribute-v1",
     "description": "Attribute axis: the qualities the text predicates of its entities (adjectives "
                    "and adjectival phrases), as store-normalized attribute values.",
     "output": "attribute-values-v1",
     "resources": {"cpu": 1.0, "memory_mb": 1024, "workers": 2},
     "dependencies": [],
+    # What host stages read from it besides the head (nam_heads.sdk.exports).
+    "provides": {
+        "entity_admits": "definitions:entity_admits",
+        "evidence_exclusions_enabled": "definitions:evidence_exclusions_enabled",
+        "title_spans": "predication:title_spans",
+        "seed": "exports:seed",
+        "axis_encoder": "exports:axis_encoder",
+    },
 }
 
 logger = logging.getLogger(__name__)
@@ -72,10 +80,9 @@ class AttributeEncoder(EncoderHead):
     HEAD_TYPE = "attribute"
 
     def create_axis_encoder(self):
-        """This head's own encoder, from its own package (``encoder/charcnn``)."""
-        from pathlib import Path as _Path
-        from src.encoders.axis_encoder import package_axis_encoder
-        return package_axis_encoder(self.head_type, _Path(__file__).resolve().parent / "encoder" / "charcnn")
+        """This head's own encoder (exports.axis_encoder, the one host stages read too)."""
+        from .exports import axis_encoder
+        return axis_encoder()
 
     def _initialize(self):
         cfg = {**DEFAULT_CONFIG, **self.config}

@@ -34,6 +34,34 @@ def test_impl_meta_is_well_formed(impl):
     assert (meta["slot"], meta["name"]) == (impl.slot, impl.name)
 
 
+@pytest.mark.parametrize("impl", IMPLS, ids=IDS)
+def test_declared_exports_load(impl):
+    """Every export an implementation declares (IMPL_META "provides") imports and is of its kind."""
+    if T.unavailable(impl):
+        pytest.skip(f"unavailable here: {T.unavailable(impl)}")
+    problems = T.check_provides(impl)
+    if any("No module named 'src" in p for p in problems):
+        pytest.skip(f"needs the NAM host; set NAM_SRC ({problems[0]})")
+    assert problems == []
+
+
+def test_the_defaults_provide_what_nam_reads():
+    """The exports NAM's host stages read from the default implementations are declared."""
+    want = {"nlp.rule": {"pos_dictionary", "countries", "cities"},
+            "ontology.codebook": {"merge_diagnostics"},
+            "entity.default": {"normalize_mention", "comparator", "open_store"},
+            "attribute.default": {"entity_admits", "evidence_exclusions_enabled", "title_spans", "seed",
+                                  "axis_encoder"},
+            "affordance.default": {"verb_synonyms", "verb_categories", "verb_bases", "resolve_base",
+                                   "phrasal_verbs", "link_profile", "senses_enabled", "seed", "axis_encoder"},
+            "context.default": {"entity_profile", "admit_context", "select_contexts", "seed", "axis_encoder"}}
+    for impl in IMPLS:
+        key = f"{impl.slot}.{impl.name}"
+        if key in want:
+            meta, _ = read_impl_meta(impl.head)
+            assert set(meta.get("provides") or {}) == want[key], key
+
+
 HEADS = [i for i in IMPLS if i.slot != "nlp"]
 PARSERS = [i for i in IMPLS if i.slot == "nlp"]
 
